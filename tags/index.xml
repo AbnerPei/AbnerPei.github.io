@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Tags on AbnerPei</title>
+        <link>https://example.com/tags/</link>
+        <description>Recent content in Tags on AbnerPei</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Fri, 08 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>环境配置</title>
+        <link>https://example.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+        <pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>PPMaker</title>
+        <link>https://example.com/tags/ppmaker/</link>
+        <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/tags/ppmaker/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>
