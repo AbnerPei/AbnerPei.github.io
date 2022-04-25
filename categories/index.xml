@@ -6,10 +6,10 @@
         <description>Recent content in Categories on AbnerPei</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 08 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 09 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Flutter</title>
         <link>https://example.com/categories/flutter/</link>
-        <pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate>
+        <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
         
         <guid>https://example.com/categories/flutter/</guid>
         <description>&lt;img src="https://example.com/categories/flutter/001.webp" alt="Featured image of post Flutter" /&gt;</description>
@@ -45,6 +45,14 @@
         
         <guid>https://example.com/categories/%E6%88%91%E7%9A%84%E5%BC%80%E6%BA%90%E5%BA%93/</guid>
         <description>&lt;img src="https://example.com/categories/%E6%88%91%E7%9A%84%E5%BC%80%E6%BA%90%E5%BA%93/001.webp" alt="Featured image of post 我的开源库" /&gt;</description>
+        </item>
+        <item>
+        <title>UGC</title>
+        <link>https://example.com/categories/ugc/</link>
+        <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/categories/ugc/</guid>
+        <description></description>
         </item>
         
     </channel>
