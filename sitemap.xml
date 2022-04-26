@@ -23,15 +23,6 @@
     <loc>https://example.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2022-04-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/git/</loc>
-    <lastmod>2022-04-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/p/git-error-20210813/</loc>
-    <lastmod>2022-04-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/categories/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2022-04-08T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://example.com/categories/api/</loc>
     <lastmod>2021-10-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -40,6 +31,27 @@
   </url><url>
     <loc>https://example.com/p/ios-ios15-uibutton-update-api/</loc>
     <lastmod>2021-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/docsify/</loc>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/p/20210923/</loc>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2021-09-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/git/</loc>
+    <lastmod>2021-08-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/p/20210815/</loc>
+    <lastmod>2021-08-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/p/20210502/</loc>
+    <lastmod>2021-05-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/</loc>
+    <lastmod>2021-05-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/page/</loc>
     <lastmod>2020-10-09T00:00:00+00:00</lastmod>
@@ -73,6 +85,12 @@
   </url><url>
     <loc>https://example.com/p/ugc-20180308/</loc>
     <lastmod>2018-03-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/cocoapods/</loc>
+    <lastmod>2017-11-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/p/20171124/</loc>
+    <lastmod>2017-11-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/nscharacterset/</loc>
     <lastmod>2016-12-23T00:00:00+00:00</lastmod>
