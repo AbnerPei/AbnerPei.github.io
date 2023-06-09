@@ -350,13 +350,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="kd">var</span> <span class="nv">conf</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">borderedTinted</span><span class="p">()</span>
-<span class="c1">/// 设置图片的摆放（图片在上，则文字在下）</span>
-<span class="n">conf</span><span class="p">.</span><span class="n">imagePlacement</span> <span class="p">=</span> <span class="p">.</span><span class="n">top</span>
-<span class="c1">/// 设置图片和文字的间距</span>
-<span class="n">conf</span><span class="p">.</span><span class="n">imagePadding</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="kd">let</span> <span class="nv">bt</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">configuration</span><span class="p">:</span> <span class="n">conf</span><span class="p">,</span> <span class="n">primaryAction</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nv">conf</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">borderedTinted</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1">/// 设置图片的摆放（图片在上，则文字在下）</span>
+</span></span><span class="line"><span class="cl"><span class="n">conf</span><span class="p">.</span><span class="n">imagePlacement</span> <span class="p">=</span> <span class="p">.</span><span class="n">top</span>
+</span></span><span class="line"><span class="cl"><span class="c1">/// 设置图片和文字的间距</span>
+</span></span><span class="line"><span class="cl"><span class="n">conf</span><span class="p">.</span><span class="n">imagePadding</span> <span class="p">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">bt</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">configuration</span><span class="p">:</span> <span class="n">conf</span><span class="p">,</span> <span class="n">primaryAction</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>插一句：对于<code>configuration</code>这样的<code>API</code>设计，我是非常认可的，一看就知道是干什么用的！感觉苹果爸爸也有意如此设计，比如<code>iOS14</code>开始的的<code>PHPickerConfiguration</code>等。</p>
@@ -478,58 +478,58 @@
 </span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="kd">class</span> <span class="nc">ViewController</span><span class="p">:</span> <span class="n">UIViewController</span> <span class="p">{</span>
-
-    <span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kc">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
-        <span class="c1">// Do any additional setup after loading the view.</span>
-        <span class="n">view</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="p">=</span> <span class="p">.</span><span class="n">white</span>
-        <span class="n">test</span><span class="p">()</span>
-    <span class="p">}</span>
-    
-    <span class="kd">func</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nv">conf1</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">plain</span><span class="p">()</span>
-        <span class="n">conf1</span><span class="p">.</span><span class="n">title</span> <span class="p">=</span> <span class="s">&#34;点赞&#34;</span>
-        <span class="n">conf1</span><span class="p">.</span><span class="n">image</span> <span class="p">=</span> <span class="n">UIImage</span><span class="p">(</span><span class="n">named</span><span class="p">:</span> <span class="s">&#34;liked&#34;</span><span class="p">)</span>
-        <span class="n">conf1</span><span class="p">.</span><span class="n">imagePlacement</span> <span class="p">=</span> <span class="p">.</span><span class="n">leading</span>
-        <span class="n">conf1</span><span class="p">.</span><span class="n">imagePadding</span> <span class="p">=</span> <span class="mi">10</span>
-        <span class="kd">let</span> <span class="nv">bt1</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">configuration</span><span class="p">:</span> <span class="n">conf1</span><span class="p">,</span> <span class="n">primaryAction</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
-        
-        <span class="kd">var</span> <span class="nv">conf2</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">bordered</span><span class="p">()</span>
-        <span class="n">conf2</span><span class="p">.</span><span class="n">title</span> <span class="p">=</span> <span class="s">&#34;点赞&#34;</span>
-        <span class="n">conf2</span><span class="p">.</span><span class="n">image</span> <span class="p">=</span> <span class="n">UIImage</span><span class="p">(</span><span class="n">named</span><span class="p">:</span> <span class="s">&#34;liked&#34;</span><span class="p">)</span>
-        <span class="n">conf2</span><span class="p">.</span><span class="n">imagePlacement</span> <span class="p">=</span> <span class="p">.</span><span class="n">trailing</span>
-        <span class="n">conf2</span><span class="p">.</span><span class="n">imagePadding</span> <span class="p">=</span> <span class="mi">40</span>
-        <span class="kd">let</span> <span class="nv">bt2</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">configuration</span><span class="p">:</span> <span class="n">conf2</span><span class="p">,</span> <span class="n">primaryAction</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
-        
-        <span class="kd">var</span> <span class="nv">conf3</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">borderedTinted</span><span class="p">()</span>
-        <span class="n">conf3</span><span class="p">.</span><span class="n">title</span> <span class="p">=</span> <span class="s">&#34;点赞&#34;</span>
-        <span class="n">conf3</span><span class="p">.</span><span class="n">image</span> <span class="p">=</span> <span class="n">UIImage</span><span class="p">(</span><span class="n">named</span><span class="p">:</span> <span class="s">&#34;liked&#34;</span><span class="p">)</span>
-        <span class="n">conf3</span><span class="p">.</span><span class="n">imagePlacement</span> <span class="p">=</span> <span class="p">.</span><span class="n">top</span>
-        <span class="n">conf3</span><span class="p">.</span><span class="n">imagePadding</span> <span class="p">=</span> <span class="mi">10</span>
-        <span class="kd">let</span> <span class="nv">bt3</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">configuration</span><span class="p">:</span> <span class="n">conf3</span><span class="p">,</span> <span class="n">primaryAction</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
-        
-        <span class="kd">var</span> <span class="nv">conf4</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">gray</span><span class="p">()</span>
-        <span class="n">conf4</span><span class="p">.</span><span class="n">title</span> <span class="p">=</span> <span class="s">&#34;点赞&#34;</span>
-        <span class="n">conf4</span><span class="p">.</span><span class="n">image</span> <span class="p">=</span> <span class="n">UIImage</span><span class="p">(</span><span class="n">named</span><span class="p">:</span> <span class="s">&#34;liked&#34;</span><span class="p">)</span>
-        <span class="n">conf4</span><span class="p">.</span><span class="n">imagePlacement</span> <span class="p">=</span> <span class="p">.</span><span class="n">bottom</span>
-        <span class="n">conf4</span><span class="p">.</span><span class="n">imagePadding</span> <span class="p">=</span> <span class="mi">10</span>
-        <span class="kd">let</span> <span class="nv">bt4</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">configuration</span><span class="p">:</span> <span class="n">conf4</span><span class="p">,</span> <span class="n">primaryAction</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
-        
-        <span class="n">bt1</span><span class="p">.</span><span class="n">frame</span> <span class="p">=</span> <span class="n">CGRect</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="mi">80</span><span class="p">)</span>
-        <span class="n">bt2</span><span class="p">.</span><span class="n">frame</span> <span class="p">=</span> <span class="n">CGRect</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="mi">80</span><span class="p">)</span>
-        <span class="n">bt3</span><span class="p">.</span><span class="n">frame</span> <span class="p">=</span> <span class="n">CGRect</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">230</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="mi">80</span><span class="p">)</span>
-        <span class="n">bt4</span><span class="p">.</span><span class="n">frame</span> <span class="p">=</span> <span class="n">CGRect</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">230</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="mi">80</span><span class="p">)</span>
-        
-        <span class="n">view</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">bt1</span><span class="p">)</span>
-        <span class="n">view</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">bt2</span><span class="p">)</span>
-        <span class="n">view</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">bt3</span><span class="p">)</span>
-        <span class="n">view</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">bt4</span><span class="p">)</span>
-
-    <span class="p">}</span>
-
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">ViewController</span><span class="p">:</span> <span class="n">UIViewController</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kc">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Do any additional setup after loading the view.</span>
+</span></span><span class="line"><span class="cl">        <span class="n">view</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="p">=</span> <span class="p">.</span><span class="n">white</span>
+</span></span><span class="line"><span class="cl">        <span class="n">test</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nv">conf1</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">plain</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf1</span><span class="p">.</span><span class="n">title</span> <span class="p">=</span> <span class="s">&#34;点赞&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf1</span><span class="p">.</span><span class="n">image</span> <span class="p">=</span> <span class="n">UIImage</span><span class="p">(</span><span class="n">named</span><span class="p">:</span> <span class="s">&#34;liked&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf1</span><span class="p">.</span><span class="n">imagePlacement</span> <span class="p">=</span> <span class="p">.</span><span class="n">leading</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf1</span><span class="p">.</span><span class="n">imagePadding</span> <span class="p">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nv">bt1</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">configuration</span><span class="p">:</span> <span class="n">conf1</span><span class="p">,</span> <span class="n">primaryAction</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nv">conf2</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">bordered</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf2</span><span class="p">.</span><span class="n">title</span> <span class="p">=</span> <span class="s">&#34;点赞&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf2</span><span class="p">.</span><span class="n">image</span> <span class="p">=</span> <span class="n">UIImage</span><span class="p">(</span><span class="n">named</span><span class="p">:</span> <span class="s">&#34;liked&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf2</span><span class="p">.</span><span class="n">imagePlacement</span> <span class="p">=</span> <span class="p">.</span><span class="n">trailing</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf2</span><span class="p">.</span><span class="n">imagePadding</span> <span class="p">=</span> <span class="mi">40</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nv">bt2</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">configuration</span><span class="p">:</span> <span class="n">conf2</span><span class="p">,</span> <span class="n">primaryAction</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nv">conf3</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">borderedTinted</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf3</span><span class="p">.</span><span class="n">title</span> <span class="p">=</span> <span class="s">&#34;点赞&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf3</span><span class="p">.</span><span class="n">image</span> <span class="p">=</span> <span class="n">UIImage</span><span class="p">(</span><span class="n">named</span><span class="p">:</span> <span class="s">&#34;liked&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf3</span><span class="p">.</span><span class="n">imagePlacement</span> <span class="p">=</span> <span class="p">.</span><span class="n">top</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf3</span><span class="p">.</span><span class="n">imagePadding</span> <span class="p">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nv">bt3</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">configuration</span><span class="p">:</span> <span class="n">conf3</span><span class="p">,</span> <span class="n">primaryAction</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nv">conf4</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">gray</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf4</span><span class="p">.</span><span class="n">title</span> <span class="p">=</span> <span class="s">&#34;点赞&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf4</span><span class="p">.</span><span class="n">image</span> <span class="p">=</span> <span class="n">UIImage</span><span class="p">(</span><span class="n">named</span><span class="p">:</span> <span class="s">&#34;liked&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf4</span><span class="p">.</span><span class="n">imagePlacement</span> <span class="p">=</span> <span class="p">.</span><span class="n">bottom</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conf4</span><span class="p">.</span><span class="n">imagePadding</span> <span class="p">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nv">bt4</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">configuration</span><span class="p">:</span> <span class="n">conf4</span><span class="p">,</span> <span class="n">primaryAction</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">bt1</span><span class="p">.</span><span class="n">frame</span> <span class="p">=</span> <span class="n">CGRect</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="mi">80</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bt2</span><span class="p">.</span><span class="n">frame</span> <span class="p">=</span> <span class="n">CGRect</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="mi">80</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bt3</span><span class="p">.</span><span class="n">frame</span> <span class="p">=</span> <span class="n">CGRect</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">230</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="mi">80</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bt4</span><span class="p">.</span><span class="n">frame</span> <span class="p">=</span> <span class="n">CGRect</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">230</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="mi">80</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">view</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">bt1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">view</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">bt2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">view</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">bt3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">view</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">bt4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后，话又说回来了，目前我们的<code>APP</code>不可能是从<code>iOS15</code>开始的，估计大多数是从<code>iOS11</code>开始的，还有一部分是从<code>iOS9</code>开始，也有一部分是从<code>iOS13</code>开始的，所以 <strong>做好兼容还是很有必要的</strong>！</p>
 <p>而更多关于<code>UIButton</code>的新知，请自行查看<code>API</code>学习，总体感觉：<strong>UIButton更丰富多彩了</strong>！</p>
@@ -587,6 +587,42 @@
             
                 
 <article class="has-image">
+    <a href="/p/20230606/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20230606" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">设置符号断点（Symbolic Breakpoint）的几种方式</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/20210502/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20210502" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">iOS代码块（CodeSnippets）你值得拥有：大大提升编码效率</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
     <a href="/p/ios%E9%93%BE%E5%BC%8F%E5%88%9B%E5%BB%BAui%E7%BB%88%E7%BB%93%E8%80%85-ppmaker/">
         
         
@@ -605,12 +641,12 @@
             
                 
 <article class="has-image">
-    <a href="/p/ugc-20180308/">
+    <a href="/p/20180308/">
         
         
             <div class="article-image">
                 
-                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180308.jpeg" loading="lazy" data-key="ugc-20180308" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180308.jpeg"/>
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180308.jpeg" loading="lazy" data-key="20180308" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180308.jpeg"/>
                 
             </div>
         
@@ -631,7 +667,7 @@
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -678,7 +714,7 @@
         
             2016 - 
         
-        2022 AbnerPei
+        2023 AbnerPei
     </section>
     
     <section class="powerby">

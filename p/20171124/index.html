@@ -250,6 +250,10 @@
     
     <header class="article-category">
         
+            <a href="/categories/ios/" style="background-color: #000000; color: #fff;">
+                iOS
+            </a>
+        
             <a href="/categories/%E5%B7%A5%E5%85%B7/" style="background-color: #296062; color: #fff;">
                 工具
             </a>
@@ -351,15 +355,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">//2.1（具体路径，看你自己放置）
-<span class="nb">cd</span> /Users/peijianbo/Documents/MTTest 
-//2.2 
-git clone https://github.com/chinesemanbobo/PPKit1.git 
-//2.3 <span class="o">(</span>切换到开源库名相同的目录<span class="o">)</span>
-<span class="nb">cd</span> /Users/peijianbo/Documents/MTTest/PPKit1
-//2.4 （很重要的第一步，create后面必须是开源库名，此处是PPKit1）
-pod spec create PPKit1
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">//2.1（具体路径，看你自己放置）
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /Users/peijianbo/Documents/MTTest 
+</span></span><span class="line"><span class="cl">//2.2 
+</span></span><span class="line"><span class="cl">git clone https://github.com/chinesemanbobo/PPKit1.git 
+</span></span><span class="line"><span class="cl">//2.3 <span class="o">(</span>切换到开源库名相同的目录<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /Users/peijianbo/Documents/MTTest/PPKit1
+</span></span><span class="line"><span class="cl">//2.4 （很重要的第一步，create后面必须是开源库名，此处是PPKit1）
+</span></span><span class="line"><span class="cl">pod spec create PPKit1
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>至此，会出现<strong>Specification created at PPKit1.podspec</strong>。Good!</p>
 <h2 id="第步配置podspec尤其是里面的source_files文件要注意">第③步：配置.podspec，尤其是里面的.source_files文件要注意</h2>
@@ -377,13 +381,13 @@ pod spec create PPKit1
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#  Be sure to run `pod spec lint PPKit.podspec&#39; to ensure this is a</span>
-<span class="c1">#  valid spec and to remove all comments including this before submitting the spec.</span>
-<span class="c1">#</span>
-<span class="c1">#  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html</span>
-<span class="c1">#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/</span>
-<span class="c1">#</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#  Be sure to run `pod spec lint PPKit.podspec&#39; to ensure this is a</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  valid spec and to remove all comments including this before submitting the spec.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <ol>
@@ -489,69 +493,69 @@ pod spec create PPKit1
 </span><span class="lnt">62
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Pod::Spec.new <span class="k">do</span> <span class="p">|</span>s<span class="p">|</span>
-
-  <span class="c1">#开源库的名字</span>
-  s.name         <span class="o">=</span> <span class="s2">&#34;PPKit&#34;</span>   
-  <span class="c1">#开源库当期版本</span>
-  s.version      <span class="o">=</span> <span class="s2">&#34;0.0.6&#34;</span>   
-  <span class="c1">#开源库概述（打开GitHub能看到的描述）</span>
-  s.summary      <span class="o">=</span> <span class="s2">&#34;开发中常用的自定义控件、开发经验、开发bug记录，常用宏、categories等封装，不再每个项目都手动配置，用Pod统一管理。&#34;</span>    
-  <span class="c1">#开源库描述 （这个描述会被用来生成开源库的标签和提高被搜到，必需写在中间一行，只要在中间一行，不需要考虑缩进）</span>
-  s.description  <span class="o">=</span> <span class="s">&lt;&lt;-DESC
-</span><span class="s">                   开发中经常从A项目copy一些代码（比如常用的宏、category等）到B项目，A更改了一个category，B又要改动；B更改了一个category，A也要改动，不方便同步，就容易出差错，所以，考虑用Pod来管理。
-</span><span class="s">                   DESC</span>
-
-  <span class="c1">#可以是开源库的GitHub地址，也可以是你自己的网址等</span>
-  s.homepage     <span class="o">=</span> <span class="s2">&#34;https://github.com/chinesemanbobo/PPKit&#34;</span>
-  <span class="c1">#我这里是参靠网上的一种写法，不会报警告，也可以直接 s.license = &#39;MIT&#39;</span>
-  s.license <span class="o">=</span> <span class="o">{</span> :type <span class="o">=</span>&gt; <span class="s1">&#39;MIT&#39;</span>, :text <span class="o">=</span>&gt; <span class="s">&lt;&lt;-LICENSE
-</span><span class="s">         Copyright PPAbner 2016-2017
-</span><span class="s">          LICENSE</span>
-      <span class="o">}</span>
-  <span class="c1">#开源库作者</span>
-  s.author             <span class="o">=</span> <span class="o">{</span> <span class="s2">&#34;chinesemanbobo&#34;</span> <span class="o">=</span>&gt; <span class="s2">&#34;chinesemanbobo@163.com&#34;</span> <span class="o">}</span>
-  <span class="c1">#开源库作者的社交链接（此处我放的是微博）</span>
-  s.social_media_url   <span class="o">=</span> <span class="s2">&#34;https://weibo.com/5366568018/profile?rightmod=1&amp;wvr=6&amp;mod=personnumber&amp;is_all=1&#34;</span>
-
-  <span class="c1">#开源库支持的平台（暂时没考虑tvOS、OSX等）</span>
-  s.platform     <span class="o">=</span> :ios
-  <span class="c1">#开源库最低支持</span>
-  s.ios.deployment_target <span class="o">=</span> <span class="s2">&#34;8.0&#34;</span>
-
-  <span class="c1">#VIP 开源库GitHub的路径与tag值，GitHub路径后必须有.git,tag实际就是上面的版本</span>
-  s.source       <span class="o">=</span> <span class="o">{</span> :git <span class="o">=</span>&gt; <span class="s2">&#34;https://github.com/chinesemanbobo/PPKit.git&#34;</span>, :tag <span class="o">=</span>&gt; s.version <span class="o">}</span>
-
-  <span class="c1">#VIP 开源库资源文件 （我自己总结：每个文件都要有自己的路径，尤其你想目录分的比较详细的话，更具体的说明，看图对比着再说）</span>
-  s.source_files <span class="o">=</span> <span class="s1">&#39;PPKit/PPKit.h&#39;</span>,<span class="s1">&#39;PPKit/PPMacros.h&#39;</span>
-
-
-  <span class="c1">#子目录PPHelpers（2级），PPKit(1级)，ss子目录可以随便写，但下面要对应</span>
-  s.subspec <span class="s1">&#39;PPHelpers&#39;</span> <span class="k">do</span> <span class="p">|</span>ss<span class="p">|</span>
-    <span class="c1">#子目录PPRuntimeHelper.h和PPRuntimeHelper.m （3级）</span>
-    ss.source_files <span class="o">=</span> <span class="s1">&#39;PPKit/PPHelpers/PPRuntimeHelper.{h,m}&#39;</span>
-   
-    end
-
-  s.subspec <span class="s1">&#39;PPCategories&#39;</span> <span class="k">do</span> <span class="p">|</span>ss<span class="p">|</span>
-    ss.subspec <span class="s1">&#39;UI&#39;</span> <span class="k">do</span> <span class="p">|</span>ssui<span class="p">|</span>
-        ssui.subspec <span class="s1">&#39;UIScreen&#39;</span> <span class="k">do</span> <span class="p">|</span>ssuiscreen<span class="p">|</span>
-              ssuiscreen.source_files <span class="o">=</span> <span class="s1">&#39;PPKit/PPCategories/UI/UIScreen/UIScreen+EasilySize.{h,m}&#39;</span>
-             end
-       end
-    end
-
-  <span class="c1">#开源库头文件</span>
-  s.public_header_files <span class="o">=</span> <span class="s1">&#39;PPKit/PPKit.h&#39;</span> 
-
-  <span class="c1">#开源库依赖库 </span>
-  <span class="c1"># s.dependency &#34;JSONKit&#34;, &#34;~&gt; 1.4&#34;</span>
-
-  <span class="c1"># 是否支持arc</span>
-  s.requires_arc <span class="o">=</span> <span class="nb">true</span>
-
-end
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Pod::Spec.new <span class="k">do</span> <span class="p">|</span>s<span class="p">|</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">#开源库的名字</span>
+</span></span><span class="line"><span class="cl">  s.name         <span class="o">=</span> <span class="s2">&#34;PPKit&#34;</span>   
+</span></span><span class="line"><span class="cl">  <span class="c1">#开源库当期版本</span>
+</span></span><span class="line"><span class="cl">  s.version      <span class="o">=</span> <span class="s2">&#34;0.0.6&#34;</span>   
+</span></span><span class="line"><span class="cl">  <span class="c1">#开源库概述（打开GitHub能看到的描述）</span>
+</span></span><span class="line"><span class="cl">  s.summary      <span class="o">=</span> <span class="s2">&#34;开发中常用的自定义控件、开发经验、开发bug记录，常用宏、categories等封装，不再每个项目都手动配置，用Pod统一管理。&#34;</span>    
+</span></span><span class="line"><span class="cl">  <span class="c1">#开源库描述 （这个描述会被用来生成开源库的标签和提高被搜到，必需写在中间一行，只要在中间一行，不需要考虑缩进）</span>
+</span></span><span class="line"><span class="cl">  s.description  <span class="o">=</span> <span class="s">&lt;&lt;-DESC
+</span></span></span><span class="line"><span class="cl"><span class="s">                   开发中经常从A项目copy一些代码（比如常用的宏、category等）到B项目，A更改了一个category，B又要改动；B更改了一个category，A也要改动，不方便同步，就容易出差错，所以，考虑用Pod来管理。
+</span></span></span><span class="line"><span class="cl"><span class="s">                   DESC</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">#可以是开源库的GitHub地址，也可以是你自己的网址等</span>
+</span></span><span class="line"><span class="cl">  s.homepage     <span class="o">=</span> <span class="s2">&#34;https://github.com/chinesemanbobo/PPKit&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">#我这里是参靠网上的一种写法，不会报警告，也可以直接 s.license = &#39;MIT&#39;</span>
+</span></span><span class="line"><span class="cl">  s.license <span class="o">=</span> <span class="o">{</span> :type <span class="o">=</span>&gt; <span class="s1">&#39;MIT&#39;</span>, :text <span class="o">=</span>&gt; <span class="s">&lt;&lt;-LICENSE
+</span></span></span><span class="line"><span class="cl"><span class="s">         Copyright PPAbner 2016-2017
+</span></span></span><span class="line"><span class="cl"><span class="s">          LICENSE</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">#开源库作者</span>
+</span></span><span class="line"><span class="cl">  s.author             <span class="o">=</span> <span class="o">{</span> <span class="s2">&#34;chinesemanbobo&#34;</span> <span class="o">=</span>&gt; <span class="s2">&#34;chinesemanbobo@163.com&#34;</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">#开源库作者的社交链接（此处我放的是微博）</span>
+</span></span><span class="line"><span class="cl">  s.social_media_url   <span class="o">=</span> <span class="s2">&#34;https://weibo.com/5366568018/profile?rightmod=1&amp;wvr=6&amp;mod=personnumber&amp;is_all=1&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">#开源库支持的平台（暂时没考虑tvOS、OSX等）</span>
+</span></span><span class="line"><span class="cl">  s.platform     <span class="o">=</span> :ios
+</span></span><span class="line"><span class="cl">  <span class="c1">#开源库最低支持</span>
+</span></span><span class="line"><span class="cl">  s.ios.deployment_target <span class="o">=</span> <span class="s2">&#34;8.0&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">#VIP 开源库GitHub的路径与tag值，GitHub路径后必须有.git,tag实际就是上面的版本</span>
+</span></span><span class="line"><span class="cl">  s.source       <span class="o">=</span> <span class="o">{</span> :git <span class="o">=</span>&gt; <span class="s2">&#34;https://github.com/chinesemanbobo/PPKit.git&#34;</span>, :tag <span class="o">=</span>&gt; s.version <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">#VIP 开源库资源文件 （我自己总结：每个文件都要有自己的路径，尤其你想目录分的比较详细的话，更具体的说明，看图对比着再说）</span>
+</span></span><span class="line"><span class="cl">  s.source_files <span class="o">=</span> <span class="s1">&#39;PPKit/PPKit.h&#39;</span>,<span class="s1">&#39;PPKit/PPMacros.h&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">#子目录PPHelpers（2级），PPKit(1级)，ss子目录可以随便写，但下面要对应</span>
+</span></span><span class="line"><span class="cl">  s.subspec <span class="s1">&#39;PPHelpers&#39;</span> <span class="k">do</span> <span class="p">|</span>ss<span class="p">|</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#子目录PPRuntimeHelper.h和PPRuntimeHelper.m （3级）</span>
+</span></span><span class="line"><span class="cl">    ss.source_files <span class="o">=</span> <span class="s1">&#39;PPKit/PPHelpers/PPRuntimeHelper.{h,m}&#39;</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  s.subspec <span class="s1">&#39;PPCategories&#39;</span> <span class="k">do</span> <span class="p">|</span>ss<span class="p">|</span>
+</span></span><span class="line"><span class="cl">    ss.subspec <span class="s1">&#39;UI&#39;</span> <span class="k">do</span> <span class="p">|</span>ssui<span class="p">|</span>
+</span></span><span class="line"><span class="cl">        ssui.subspec <span class="s1">&#39;UIScreen&#39;</span> <span class="k">do</span> <span class="p">|</span>ssuiscreen<span class="p">|</span>
+</span></span><span class="line"><span class="cl">              ssuiscreen.source_files <span class="o">=</span> <span class="s1">&#39;PPKit/PPCategories/UI/UIScreen/UIScreen+EasilySize.{h,m}&#39;</span>
+</span></span><span class="line"><span class="cl">             end
+</span></span><span class="line"><span class="cl">       end
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">#开源库头文件</span>
+</span></span><span class="line"><span class="cl">  s.public_header_files <span class="o">=</span> <span class="s1">&#39;PPKit/PPKit.h&#39;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">#开源库依赖库 </span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># s.dependency &#34;JSONKit&#34;, &#34;~&gt; 1.4&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># 是否支持arc</span>
+</span></span><span class="line"><span class="cl">  s.requires_arc <span class="o">=</span> <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">end
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>3.2 .podspec里面的.source_files的常见语法</strong></p>
 <blockquote>
@@ -564,10 +568,10 @@ end
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="s2">&#34;PPKit/*&#34;</span>  表示匹配所有PPKit目录下文件，不包含子目录的
-<span class="s2">&#34;PPKit/PPHelpers/*.{h,m}&#34;</span>  表示匹配PPHelpers所有以.h和.m结尾的文件
-<span class="s2">&#34;PPKit/**/*&#34;</span>  表示匹配所有文件<span class="o">(</span>主目录和子目录，其中**相当于省略中间层级<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="s2">&#34;PPKit/*&#34;</span>  表示匹配所有PPKit目录下文件，不包含子目录的
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;PPKit/PPHelpers/*.{h,m}&#34;</span>  表示匹配PPHelpers所有以.h和.m结尾的文件
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;PPKit/**/*&#34;</span>  表示匹配所有文件<span class="o">(</span>主目录和子目录，其中**相当于省略中间层级<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p><strong>具体的语法示例及截图，见文章最后面（参考链接之前）。</strong></p>
@@ -583,12 +587,12 @@ end
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git add -A <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;你的更新说明&#34;</span> 
-//tag值要和.podspce里的version相同，并且必须设置
-$ git tag <span class="s1">&#39;1.0.0&#39;</span>   
-$ git push --tags  
-$ git push origin master  
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git add -A <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;你的更新说明&#34;</span> 
+</span></span><span class="line"><span class="cl">//tag值要和.podspce里的version相同，并且必须设置
+</span></span><span class="line"><span class="cl">$ git tag <span class="s1">&#39;1.0.0&#39;</span>   
+</span></span><span class="line"><span class="cl">$ git push --tags  
+</span></span><span class="line"><span class="cl">$ git push origin master  
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="第步验证podspec是否有效">第⑤步：验证.podspec是否有效</h2>
 <div class="highlight"><div class="chroma">
@@ -596,12 +600,12 @@ $ git push origin master
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">pod spec lint PPKit.podspec
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pod spec lint PPKit.podspec
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>如果验证不通过，可以执行**<code>pod spec lint PPKit.podspec --verbose</code>**查看详细的<code>ERROR</code>和<code>WARING</code>提示，根据提示依次解决，然后回到第四步重新来一遍。
-**注意**：在重新开始之前，我们要删除远程库的<code>tag</code>和本地的<code>tag</code>，命令如下：</p>
+<strong>注意</strong>：在重新开始之前，我们要删除远程库的<code>tag</code>和本地的<code>tag</code>，命令如下：</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -609,9 +613,9 @@ $ git push origin master
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"> $ git tag -d 0.0.68                   //删除本地tag
- $ git push origin :refs/tags/0.0.68   // 删除远程库tag 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> $ git tag -d 0.0.68                   //删除本地tag
+</span></span><span class="line"><span class="cl"> $ git push origin :refs/tags/0.0.68   // 删除远程库tag 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>直到如下图的验证成功。</p>
 <p><img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/Tool/%E5%88%B6%E4%BD%9Cpod%E5%BA%93/006.png"
@@ -628,8 +632,8 @@ $ git push origin master
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">pod trunk push PPKit.podspec
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pod trunk push PPKit.podspec
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>如果是第一次提交，需要先执行下面的命令去CocoaPods注册（填写邮箱，收取验证链接，点击链接，就OK）：</strong></p>
 <div class="highlight"><div class="chroma">
@@ -637,8 +641,8 @@ $ git push origin master
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pod trunk register 邮箱 <span class="s1">&#39;昵称&#39;</span> --description<span class="o">=</span><span class="s1">&#39; 这里写描述&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ pod trunk register 邮箱 <span class="s1">&#39;昵称&#39;</span> --description<span class="o">=</span><span class="s1">&#39; 这里写描述&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后再执行：</p>
 <div class="highlight"><div class="chroma">
@@ -646,8 +650,8 @@ $ git push origin master
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">pod trunk push PPKit.podspec
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pod trunk push PPKit.podspec
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/Tool/%E5%88%B6%E4%BD%9Cpod%E5%BA%93/007.jpg"
 	
@@ -676,7 +680,7 @@ $ git push origin master
 </blockquote>
 <h3 id="附从afnetworkingppkityykit看podspec语法">附：从<code>AFNetworking</code>/<code>PPKit</code>/<code>YYKit</code>看<code>podspec</code>语法。</h3>
 <p>研究了自己常用的开源库的文件目录，其中**<a class="link" href="https://github.com/AFNetworking/AFNetworking"  target="_blank" rel="noopener"
-    >AFNetworking</a>**是最完美的，也是我最想要的，而其它的大多数都是，所有<code>.h</code>和<code>.m</code>文件都放在一个目录下，比如：**<a class="link" href="https://github.com/hackiftekhar/IQKeyboardManager"  target="_blank" rel="noopener"
+    >AFNetworking</a><strong>是最完美的，也是我最想要的，而其它的大多数都是，所有<code>.h</code>和<code>.m</code>文件都放在一个目录下，比如：</strong><a class="link" href="https://github.com/hackiftekhar/IQKeyboardManager"  target="_blank" rel="noopener"
     >IQKeyboardManager</a>**。对比如下图：</p>
 <p><img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/Tool/%E5%88%B6%E4%BD%9Cpod%E5%BA%93/009.jpg"
 	
@@ -784,6 +788,60 @@ $ git push origin master
             
                 
 <article class="has-image">
+    <a href="/p/20230606/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20230606" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">设置符号断点（Symbolic Breakpoint）的几种方式</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/20210502/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20210502" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">iOS代码块（CodeSnippets）你值得拥有：大大提升编码效率</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/ios-ios15-uibutton-update-api/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20211016.jpeg" loading="lazy" data-key="ios-ios15-uibutton-update-api" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20211016.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">iOS15终于迎来了UIButton的这个改动！</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
     <a href="/p/20210923/">
         
         
@@ -818,24 +876,6 @@ $ git push origin master
     </a>
 </article>
             
-                
-<article class="has-image">
-    <a href="/p/20210502/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20210502" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">iOS代码块（CodeSnippets）你值得拥有：大大提升编码效率</h2>
-        </div>
-    </a>
-</article>
-            
         </div>
     </div>
 </aside>
@@ -846,7 +886,7 @@ $ git push origin master
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -893,7 +933,7 @@ $ git push origin master
         
             2016 - 
         
-        2022 AbnerPei
+        2023 AbnerPei
     </section>
     
     <section class="powerby">

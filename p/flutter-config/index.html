@@ -339,8 +339,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">/usr/bin/ruby -e <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/usr/bin/ruby -e <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>检查<a class="link" href="https://brew.sh/index_zh-cn"  target="_blank" rel="noopener"
     ><code>Homebrew</code></a>版本：</p>
@@ -355,14 +355,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">brew --version
-
-/*
-  Homebrew 3.2.16
-  Homebrew/homebrew-core <span class="o">(</span>git revision f7d7160e185<span class="p">;</span> last commit 2021-10-12<span class="o">)</span>
-  Homebrew/homebrew-cask <span class="o">(</span>git revision d101c8d60c<span class="p">;</span> last commit 2021-10-12<span class="o">)</span>
-  */
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew --version
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/*
+</span></span><span class="line"><span class="cl">  Homebrew 3.2.16
+</span></span><span class="line"><span class="cl">  Homebrew/homebrew-core <span class="o">(</span>git revision f7d7160e185<span class="p">;</span> last commit 2021-10-12<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  Homebrew/homebrew-cask <span class="o">(</span>git revision d101c8d60c<span class="p">;</span> last commit 2021-10-12<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  */
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="21进入用户home目录">2.1、进入用户home目录</h3>
 <div class="highlight"><div class="chroma">
@@ -370,8 +370,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ~/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="22打开bash_profile并编辑">2.2、打开.bash_profile并编辑</h3>
 <div class="highlight"><div class="chroma">
@@ -379,8 +379,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">open .bash_profile
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">open .bash_profile
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在<code>.bash_profile</code>中添加：</p>
 <div class="highlight"><div class="chroma">
@@ -392,12 +392,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Flutter</span>
-<span class="nb">export</span> <span class="nv">PUB_HOSTED_URL</span><span class="o">=</span>https://pub.flutter-io.cn
-<span class="nb">export</span> <span class="nv">FLUTTER_STORAGE_BASE_URL</span><span class="o">=</span>https://storage.flutter-io.cn
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/Users/peijianbo/Documents/Flutter/flutter/bin:<span class="nv">$PATH</span>
-<span class="c1"># Flutter END</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Flutter</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PUB_HOSTED_URL</span><span class="o">=</span>https://pub.flutter-io.cn
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">FLUTTER_STORAGE_BASE_URL</span><span class="o">=</span>https://storage.flutter-io.cn
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/Users/peijianbo/Documents/Flutter/flutter/bin:<span class="nv">$PATH</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Flutter END</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p><strong>【提醒】</strong> 其中<code>/Users/klcw/peijianbo/Flutter/flutter</code>是我自己电脑对应的<code>Flutter SDK</code>的目录，你需要修改为你的<code>Flutter SDK</code>对应的目录。</p>
@@ -410,8 +410,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">source</span> .bash_profile
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> .bash_profile
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="25检查flutter开发环境是否可用">2.5、检查Flutter开发环境是否可用</h3>
 <div class="highlight"><div class="chroma">
@@ -419,8 +419,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">flutter doctor
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">flutter doctor
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/Flutter/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/003%20-%20%E6%A3%80%E6%9F%A5Flutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%98%AF%E5%90%A6%E9%85%8D%E7%BD%AEOK.png"
 	
@@ -474,7 +474,7 @@
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -521,7 +521,7 @@
         
             2016 - 
         
-        2022 AbnerPei
+        2023 AbnerPei
     </section>
     
     <section class="powerby">

@@ -343,24 +343,22 @@
 </span><span class="lnt">11
 </span><span class="lnt">12
 </span><span class="lnt">13
-</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C">  <span class="n">NSString</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="s">@&#34;今天我们来学习NSCharacterSet我们快乐&#34;</span><span class="p">;</span>
-  <span class="n">NSString</span> <span class="o">*</span><span class="n">str1</span> <span class="o">=</span> <span class="s">@&#34;我s今&#34;</span><span class="p">;</span>
-  <span class="n">NSMutableString</span> <span class="o">*</span><span class="n">resultStr</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableString</span> <span class="n">alloc</span><span class="p">]</span><span class="n">init</span><span class="p">];</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">str</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">NSString</span> <span class="o">*</span><span class="n">indexStr</span> <span class="o">=</span> <span class="p">[</span><span class="n">str</span> <span class="nl">substringWithRange</span><span class="p">:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
-      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">str1</span> <span class="nl">containsString</span><span class="p">:</span><span class="n">indexStr</span><span class="p">])</span> <span class="p">{</span>
-          <span class="p">[</span><span class="n">resultStr</span> <span class="nl">appendString</span><span class="p">:</span><span class="n">indexStr</span><span class="p">];</span>
-      <span class="p">}</span>
-  <span class="p">}</span>
-    
-  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;自己写---%@&#34;</span><span class="p">,</span><span class="n">resultStr</span><span class="p">);</span>
-    
-  <span class="c1">//2016-12-23 13:19:42.584 PPDemos[9065:6978391] 自己写---天们来学习NSCharacterSet们快乐
-</span><span class="c1"></span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="line"><span class="cl">  <span class="n">NSString</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="s">@&#34;今天我们来学习NSCharacterSet我们快乐&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">NSString</span> <span class="o">*</span><span class="n">str1</span> <span class="o">=</span> <span class="s">@&#34;我s今&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">NSMutableString</span> <span class="o">*</span><span class="n">resultStr</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableString</span> <span class="n">alloc</span><span class="p">]</span><span class="n">init</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">str</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">NSString</span> <span class="o">*</span><span class="n">indexStr</span> <span class="o">=</span> <span class="p">[</span><span class="n">str</span> <span class="nl">substringWithRange</span><span class="p">:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">str1</span> <span class="nl">containsString</span><span class="p">:</span><span class="n">indexStr</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="p">[</span><span class="n">resultStr</span> <span class="nl">appendString</span><span class="p">:</span><span class="n">indexStr</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;自己写---%@&#34;</span><span class="p">,</span><span class="n">resultStr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">  <span class="c1">//2016-12-23 13:19:42.584 PPDemos[9065:6978391] 自己写---天们来学习NSCharacterSet们快乐
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h5 id="112-用nscharacterset如下"><strong>1.1.2 用<code>NSCharacterSet</code>,如下：</strong></h5>
 <div class="highlight"><div class="chroma">
@@ -372,12 +370,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C">    <span class="n">NSString</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="s">@&#34;今天我们来学习NSCharacterSet我们快乐&#34;</span><span class="p">;</span>
-    <span class="n">NSCharacterSet</span> <span class="o">*</span><span class="n">characterSet</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSCharacterSet</span> <span class="nl">characterSetWithCharactersInString</span><span class="p">:</span><span class="s">@&#34;我s今&#34;</span><span class="p">];</span>
-    <span class="n">NSArray</span> <span class="o">*</span><span class="n">setArr</span> <span class="o">=</span> <span class="p">[</span><span class="n">str</span> <span class="nl">componentsSeparatedByCharactersInSet</span><span class="p">:</span><span class="n">characterSet</span><span class="p">];</span>
-    <span class="n">NSString</span> <span class="o">*</span><span class="n">resultStr1</span> <span class="o">=</span> <span class="p">[</span><span class="n">setArr</span> <span class="nl">componentsJoinedByString</span><span class="p">:</span><span class="s">@&#34;&#34;</span><span class="p">];</span>
-    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;拆分后的字符串数组------%@</span><span class="se">\n</span><span class="s">最终字符串------%@&#34;</span><span class="p">,</span><span class="n">setArr</span><span class="p">,</span><span class="n">resultStr1</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="line"><span class="cl">    <span class="n">NSString</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="s">@&#34;今天我们来学习NSCharacterSet我们快乐&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NSCharacterSet</span> <span class="o">*</span><span class="n">characterSet</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSCharacterSet</span> <span class="nl">characterSetWithCharactersInString</span><span class="p">:</span><span class="s">@&#34;我s今&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NSArray</span> <span class="o">*</span><span class="n">setArr</span> <span class="o">=</span> <span class="p">[</span><span class="n">str</span> <span class="nl">componentsSeparatedByCharactersInSet</span><span class="p">:</span><span class="n">characterSet</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NSString</span> <span class="o">*</span><span class="n">resultStr1</span> <span class="o">=</span> <span class="p">[</span><span class="n">setArr</span> <span class="nl">componentsJoinedByString</span><span class="p">:</span><span class="s">@&#34;&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;拆分后的字符串数组------%@</span><span class="se">\n</span><span class="s">最终字符串------%@&#34;</span><span class="p">,</span><span class="n">setArr</span><span class="p">,</span><span class="n">resultStr1</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p><img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/API/NSCharacterSet/001.png"
@@ -400,11 +398,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="cm">/** 001 根据一个给定的字符串获取一个NSCharacterSet对象 */</span>
-<span class="p">+</span> <span class="p">(</span><span class="n">NSCharacterSet</span> <span class="o">*</span><span class="p">)</span><span class="nf">characterSetWithCharactersInString:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">aString</span><span class="p">;</span>
-
-<span class="c1">// 使用实例，如上例！！
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="line"><span class="cl"><span class="cm">/** 001 根据一个给定的字符串获取一个NSCharacterSet对象 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">+</span> <span class="p">(</span><span class="n">NSCharacterSet</span> <span class="o">*</span><span class="p">)</span><span class="nf">characterSetWithCharactersInString:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">aString</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 使用实例，如上例！！
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -412,9 +410,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="cm">/** 002 相反字符串限制 【具体见接下的例子】 */</span>
-<span class="k">@property</span> <span class="p">(</span><span class="k">readonly</span><span class="p">,</span> <span class="k">copy</span><span class="p">)</span> <span class="n">NSCharacterSet</span> <span class="o">*</span><span class="n">invertedSet</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="line"><span class="cl"><span class="cm">/** 002 相反字符串限制 【具体见接下的例子】 */</span>
+</span></span><span class="line"><span class="cl"><span class="k">@property</span> <span class="p">(</span><span class="k">readonly</span><span class="p">,</span> <span class="k">copy</span><span class="p">)</span> <span class="n">NSCharacterSet</span> <span class="o">*</span><span class="n">invertedSet</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -429,22 +427,20 @@
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
-</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="cm">/** 003 常用快捷方法集合 （常用的，已满足大多数需求） */</span>
- <span class="o">+</span> <span class="n">controlCharacterSet</span>
- <span class="o">+</span> <span class="n">whitespaceCharacterSet</span>              <span class="c1">//空格
-</span><span class="c1"></span> <span class="o">+</span> <span class="n">whitespaceAndNewlineCharacterSet</span>    <span class="c1">//空格和换行符
-</span><span class="c1"></span> <span class="o">+</span> <span class="n">decimalDigitCharacterSet</span>            <span class="c1">//0-9的数字
-</span><span class="c1"></span> <span class="o">+</span> <span class="n">letterCharacterSet</span>                  <span class="c1">//所有字母
-</span><span class="c1"></span> <span class="o">+</span> <span class="n">lowercaseLetterCharacterSet</span>         <span class="c1">//小写字母
-</span><span class="c1"></span> <span class="o">+</span> <span class="n">uppercaseLetterCharacterSet</span>         <span class="c1">//大写字母
-</span><span class="c1"></span> <span class="o">+</span> <span class="n">alphanumericCharacterSet</span>            <span class="c1">//所有数字和字母（大小写不分）
-</span><span class="c1"></span> <span class="o">+</span> <span class="n">punctuationCharacterSet</span>             <span class="c1">//标点符号
-</span><span class="c1"></span> <span class="o">+</span> <span class="n">newlineCharacterSet</span>                 <span class="c1">//换行
-</span><span class="c1"></span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="line"><span class="cl"><span class="cm">/** 003 常用快捷方法集合 （常用的，已满足大多数需求） */</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span> <span class="n">controlCharacterSet</span>
+</span></span><span class="line"><span class="cl"> <span class="o">+</span> <span class="n">whitespaceCharacterSet</span>              <span class="c1">//空格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="o">+</span> <span class="n">whitespaceAndNewlineCharacterSet</span>    <span class="c1">//空格和换行符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="o">+</span> <span class="n">decimalDigitCharacterSet</span>            <span class="c1">//0-9的数字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="o">+</span> <span class="n">letterCharacterSet</span>                  <span class="c1">//所有字母
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="o">+</span> <span class="n">lowercaseLetterCharacterSet</span>         <span class="c1">//小写字母
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="o">+</span> <span class="n">uppercaseLetterCharacterSet</span>         <span class="c1">//大写字母
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="o">+</span> <span class="n">alphanumericCharacterSet</span>            <span class="c1">//所有数字和字母（大小写不分）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="o">+</span> <span class="n">punctuationCharacterSet</span>             <span class="c1">//标点符号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="o">+</span> <span class="n">newlineCharacterSet</span>                 <span class="c1">//换行
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h5 id="002-的-例子">002 的 例子</h5>
 <div class="highlight"><div class="chroma">
@@ -459,15 +455,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C">    <span class="n">NSCharacterSet</span> <span class="o">*</span><span class="n">set</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSCharacterSet</span> <span class="nl">characterSetWithCharactersInString</span><span class="p">:</span><span class="s">@&#34;0123456789&#34;</span><span class="p">];</span>
-    <span class="n">NSString</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="s">@&#34;7sjf78sf990s&#34;</span><span class="p">;</span>
-    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;set----%@&#34;</span><span class="p">,[</span><span class="n">str</span> <span class="nl">componentsSeparatedByCharactersInSet</span><span class="p">:</span><span class="n">set</span><span class="p">]);</span>
-    
-    <span class="n">NSCharacterSet</span> <span class="o">*</span><span class="n">invertedSet</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSCharacterSet</span> <span class="nl">characterSetWithCharactersInString</span><span class="p">:</span><span class="s">@&#34;0123456789&#34;</span><span class="p">]</span> <span class="n">invertedSet</span><span class="p">];</span>
-    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;invertedSet----%@&#34;</span><span class="p">,[</span><span class="n">str</span> <span class="nl">componentsSeparatedByCharactersInSet</span><span class="p">:</span><span class="n">invertedSet</span><span class="p">]);</span>
- 
- <span class="c1">//打印结果如下图：  【可以看出invertedSet后，刚好判断条件相反】 
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="line"><span class="cl">    <span class="n">NSCharacterSet</span> <span class="o">*</span><span class="n">set</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSCharacterSet</span> <span class="nl">characterSetWithCharactersInString</span><span class="p">:</span><span class="s">@&#34;0123456789&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NSString</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="s">@&#34;7sjf78sf990s&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;set----%@&#34;</span><span class="p">,[</span><span class="n">str</span> <span class="nl">componentsSeparatedByCharactersInSet</span><span class="p">:</span><span class="n">set</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">NSCharacterSet</span> <span class="o">*</span><span class="n">invertedSet</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSCharacterSet</span> <span class="nl">characterSetWithCharactersInString</span><span class="p">:</span><span class="s">@&#34;0123456789&#34;</span><span class="p">]</span> <span class="n">invertedSet</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;invertedSet----%@&#34;</span><span class="p">,[</span><span class="n">str</span> <span class="nl">componentsSeparatedByCharactersInSet</span><span class="p">:</span><span class="n">invertedSet</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"> <span class="c1">//打印结果如下图：  【可以看出invertedSet后，刚好判断条件相反】 
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/API/NSCharacterSet/002.png"
 	
@@ -491,13 +487,11 @@
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/** 工能同 invertedSet 方法一样，注意这个没有返回值 */
-- (void)invert;
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/** 工能同 invertedSet 方法一样，注意这个没有返回值 */
+</span></span><span class="line"><span class="cl">- (void)invert;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p><strong>附</strong>  <strong>textFielf只能输入数字</strong>的答案,如下:</p>
@@ -514,15 +508,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">textField:</span><span class="p">(</span><span class="n">UITextField</span> <span class="o">*</span><span class="p">)</span><span class="nv">textField</span> <span class="nf">shouldChangeCharactersInRange:</span><span class="p">(</span><span class="n">NSRange</span><span class="p">)</span><span class="nv">range</span> <span class="nf">replacementString:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">string</span> <span class="p">{</span>
-    <span class="n">NSCharacterSet</span> <span class="o">*</span><span class="n">charSet</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSCharacterSet</span> <span class="nl">characterSetWithCharactersInString</span><span class="p">:</span><span class="s">@&#34;0123456789&#34;</span><span class="p">]</span> <span class="n">invertedSet</span><span class="p">];</span>
-    <span class="n">NSString</span> <span class="o">*</span><span class="n">filteredStr</span> <span class="o">=</span> <span class="p">[[</span><span class="n">string</span> <span class="nl">componentsSeparatedByCharactersInSet</span><span class="p">:</span><span class="n">charSet</span><span class="p">]</span> <span class="nl">componentsJoinedByString</span><span class="p">:</span><span class="s">@&#34;&#34;</span><span class="p">];</span>
-    <span class="k">if</span> <span class="p">([</span><span class="n">string</span> <span class="nl">isEqualToString</span><span class="p">:</span><span class="n">filteredStr</span><span class="p">])</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nb">NO</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="line"><span class="cl"><span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">textField:</span><span class="p">(</span><span class="n">UITextField</span> <span class="o">*</span><span class="p">)</span><span class="nv">textField</span> <span class="nf">shouldChangeCharactersInRange:</span><span class="p">(</span><span class="n">NSRange</span><span class="p">)</span><span class="nv">range</span> <span class="nf">replacementString:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NSCharacterSet</span> <span class="o">*</span><span class="n">charSet</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSCharacterSet</span> <span class="nl">characterSetWithCharactersInString</span><span class="p">:</span><span class="s">@&#34;0123456789&#34;</span><span class="p">]</span> <span class="n">invertedSet</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NSString</span> <span class="o">*</span><span class="n">filteredStr</span> <span class="o">=</span> <span class="p">[[</span><span class="n">string</span> <span class="nl">componentsSeparatedByCharactersInSet</span><span class="p">:</span><span class="n">charSet</span><span class="p">]</span> <span class="nl">componentsJoinedByString</span><span class="p">:</span><span class="s">@&#34;&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">([</span><span class="n">string</span> <span class="nl">isEqualToString</span><span class="p">:</span><span class="n">filteredStr</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">NO</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
 </section>
@@ -584,6 +578,42 @@
             
                 
 <article class="has-image">
+    <a href="/p/20230606/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20230606" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">设置符号断点（Symbolic Breakpoint）的几种方式</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/20210502/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20210502" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">iOS代码块（CodeSnippets）你值得拥有：大大提升编码效率</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
     <a href="/p/ios%E9%93%BE%E5%BC%8F%E5%88%9B%E5%BB%BAui%E7%BB%88%E7%BB%93%E8%80%85-ppmaker/">
         
         
@@ -602,12 +632,12 @@
             
                 
 <article class="has-image">
-    <a href="/p/ugc-20180308/">
+    <a href="/p/20180308/">
         
         
             <div class="article-image">
                 
-                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180308.jpeg" loading="lazy" data-key="ugc-20180308" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180308.jpeg"/>
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180308.jpeg" loading="lazy" data-key="20180308" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180308.jpeg"/>
                 
             </div>
         
@@ -628,7 +658,7 @@
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -675,7 +705,7 @@
         
             2016 - 
         
-        2022 AbnerPei
+        2023 AbnerPei
     </section>
     
     <section class="powerby">

@@ -378,8 +378,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">pod &#39;PPMaker&#39;, &#39;~&gt; 0.0.22&#39;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pod &#39;PPMaker&#39;, &#39;~&gt; 0.0.22&#39;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li><strong>方法二、手动下载拖入</strong></li>
@@ -433,13 +433,13 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C">    <span class="n">UILabel</span> <span class="o">*</span><span class="n">lb</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UILabel</span> <span class="n">alloc</span><span class="p">]</span><span class="nl">initWithFrame</span><span class="p">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">50</span><span class="p">)];</span>
-    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">lb</span><span class="p">];</span>
-    <span class="n">lb</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="n">whiteColor</span><span class="p">];</span>
-    <span class="n">lb</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">@&#34;我是一个lb&#34;</span><span class="p">;</span>
-    <span class="n">lb</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="n">blueColor</span><span class="p">];</span>
-    <span class="n">lb</span><span class="p">.</span><span class="n">textAlignment</span> <span class="o">=</span> <span class="n">NSTextAlignmentCenter</span><span class="p">;</span>
-    <span class="n">lb</span><span class="p">.</span><span class="n">font</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIFont</span> <span class="nl">systemFontOfSize</span><span class="p">:</span><span class="mi">18</span><span class="p">];</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="line"><span class="cl">    <span class="n">UILabel</span> <span class="o">*</span><span class="n">lb</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UILabel</span> <span class="n">alloc</span><span class="p">]</span><span class="nl">initWithFrame</span><span class="p">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">50</span><span class="p">)];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">lb</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lb</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="n">whiteColor</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lb</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">@&#34;我是一个lb&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lb</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="n">blueColor</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lb</span><span class="p">.</span><span class="n">textAlignment</span> <span class="o">=</span> <span class="n">NSTextAlignmentCenter</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lb</span><span class="p">.</span><span class="n">font</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIFont</span> <span class="nl">systemFontOfSize</span><span class="p">:</span><span class="mi">18</span><span class="p">];</span></span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 <p><strong>后来：用<code>Category</code>快速创建</strong></p>
@@ -482,42 +482,42 @@
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="k">@interface</span> <span class="nc">UILabel</span> <span class="nl">(EasyMake)</span>
-<span class="p">+(</span><span class="n">UILabel</span> <span class="o">*</span><span class="p">)</span><span class="nf">lbMakeWithSuperV:</span><span class="p">(</span><span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">superV</span>
-                       <span class="nf">frame:</span><span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">frame</span>
-                        <span class="nf">font:</span><span class="p">(</span><span class="n">UIFont</span> <span class="o">*</span><span class="p">)</span><span class="nv">font</span>
-                   <span class="nf">alignment:</span><span class="p">(</span><span class="n">NSTextAlignment</span><span class="p">)</span><span class="nv">alignment</span>
-                        <span class="nf">text:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span>
-                   <span class="nf">textColor:</span><span class="p">(</span><span class="n">UIColor</span> <span class="o">*</span><span class="p">)</span><span class="nv">textColor</span><span class="p">;</span>
-
-
-<span class="k">@implementation</span> <span class="nc">UILabel</span> <span class="nl">(EasyMake)</span>
-<span class="p">+(</span><span class="n">UILabel</span> <span class="o">*</span><span class="p">)</span><span class="nf">lbMakeWithSuperV:</span><span class="p">(</span><span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">superV</span>
-                       <span class="nf">frame:</span><span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">frame</span>
-                        <span class="nf">font:</span><span class="p">(</span><span class="n">UIFont</span> <span class="o">*</span><span class="p">)</span><span class="nv">font</span>
-                   <span class="nf">alignment:</span><span class="p">(</span><span class="n">NSTextAlignment</span><span class="p">)</span><span class="nv">alignment</span>
-                        <span class="nf">text:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span>
-                   <span class="nf">textColor:</span><span class="p">(</span><span class="n">UIColor</span> <span class="o">*</span><span class="p">)</span><span class="nv">textColor</span>
-<span class="p">{</span>
-    <span class="n">UILabel</span> <span class="o">*</span><span class="n">lb</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UILabel</span> <span class="n">alloc</span><span class="p">]</span><span class="n">init</span><span class="p">];</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">superV</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">[</span><span class="n">superV</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">lb</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">font</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">lb</span><span class="p">.</span><span class="n">font</span> <span class="o">=</span> <span class="n">font</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">lb</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">textColor</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">lb</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="n">textColor</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">lb</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span><span class="p">;</span>
-    <span class="n">lb</span><span class="p">.</span><span class="n">textAlignment</span> <span class="o">=</span> <span class="n">alignment</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">lb</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">@end</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Objective-C" data-lang="Objective-C"><span class="line"><span class="cl"><span class="k">@interface</span> <span class="nc">UILabel</span> <span class="nl">(EasyMake)</span>
+</span></span><span class="line"><span class="cl"><span class="p">+(</span><span class="n">UILabel</span> <span class="o">*</span><span class="p">)</span><span class="nf">lbMakeWithSuperV:</span><span class="p">(</span><span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">superV</span>
+</span></span><span class="line"><span class="cl">                       <span class="nf">frame:</span><span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">frame</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">font:</span><span class="p">(</span><span class="n">UIFont</span> <span class="o">*</span><span class="p">)</span><span class="nv">font</span>
+</span></span><span class="line"><span class="cl">                   <span class="nf">alignment:</span><span class="p">(</span><span class="n">NSTextAlignment</span><span class="p">)</span><span class="nv">alignment</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">text:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span>
+</span></span><span class="line"><span class="cl">                   <span class="nf">textColor:</span><span class="p">(</span><span class="n">UIColor</span> <span class="o">*</span><span class="p">)</span><span class="nv">textColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@implementation</span> <span class="nc">UILabel</span> <span class="nl">(EasyMake)</span>
+</span></span><span class="line"><span class="cl"><span class="p">+(</span><span class="n">UILabel</span> <span class="o">*</span><span class="p">)</span><span class="nf">lbMakeWithSuperV:</span><span class="p">(</span><span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nv">superV</span>
+</span></span><span class="line"><span class="cl">                       <span class="nf">frame:</span><span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">frame</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">font:</span><span class="p">(</span><span class="n">UIFont</span> <span class="o">*</span><span class="p">)</span><span class="nv">font</span>
+</span></span><span class="line"><span class="cl">                   <span class="nf">alignment:</span><span class="p">(</span><span class="n">NSTextAlignment</span><span class="p">)</span><span class="nv">alignment</span>
+</span></span><span class="line"><span class="cl">                        <span class="nf">text:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span>
+</span></span><span class="line"><span class="cl">                   <span class="nf">textColor:</span><span class="p">(</span><span class="n">UIColor</span> <span class="o">*</span><span class="p">)</span><span class="nv">textColor</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">UILabel</span> <span class="o">*</span><span class="n">lb</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UILabel</span> <span class="n">alloc</span><span class="p">]</span><span class="n">init</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">superV</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">[</span><span class="n">superV</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">lb</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">font</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lb</span><span class="p">.</span><span class="n">font</span> <span class="o">=</span> <span class="n">font</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lb</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">textColor</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lb</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="n">textColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lb</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lb</span><span class="p">.</span><span class="n">textAlignment</span> <span class="o">=</span> <span class="n">alignment</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">lb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">@end</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>现在：链式调用的<code>DSL</code></strong></p>
 <p><img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/MyLibs/PPMaker/008.png"
@@ -598,6 +598,42 @@
             
                 
 <article class="has-image">
+    <a href="/p/20161010/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2016/20161010.jpeg" loading="lazy" data-key="20161010" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2016/20161010.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PPTextField，一个属性搞定UITextField的各种限制，再也不用写一大堆代理了</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/20230606/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20230606" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">设置符号断点（Symbolic Breakpoint）的几种方式</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
     <a href="/p/ios-ios15-uibutton-update-api/">
         
         
@@ -616,36 +652,36 @@
             
                 
 <article class="has-image">
-    <a href="/p/ugc-20180308/">
+    <a href="/p/20210502/">
         
         
             <div class="article-image">
                 
-                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180308.jpeg" loading="lazy" data-key="ugc-20180308" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180308.jpeg"/>
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20210502" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">浅读MJRefresh后自定义了个UIScrollView监听滚动的block属性</h2>
+            <h2 class="article-title">iOS代码块（CodeSnippets）你值得拥有：大大提升编码效率</h2>
         </div>
     </a>
 </article>
             
                 
 <article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%BC%9Anscharacterset%E5%86%8D%E4%B9%9F%E4%B8%8D%E6%80%95%E5%90%84%E7%A7%8D%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/">
+    <a href="/p/20180308/">
         
         
             <div class="article-image">
                 
-                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2016/20161213.jpeg" loading="lazy" data-key="" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2016/20161213.jpeg"/>
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180308.jpeg" loading="lazy" data-key="20180308" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180308.jpeg"/>
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">学会NSCharacterSet，再也不怕各种字符串处理！</h2>
+            <h2 class="article-title">浅读MJRefresh后自定义了个UIScrollView监听滚动的block属性</h2>
         </div>
     </a>
 </article>
@@ -660,7 +696,7 @@
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -707,7 +743,7 @@
         
             2016 - 
         
-        2022 AbnerPei
+        2023 AbnerPei
     </section>
     
     <section class="powerby">
