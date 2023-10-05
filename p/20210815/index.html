@@ -3,11 +3,11 @@
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='周末在家，天公不做美，大雨！所以，就优化一下之前的一个开源库PPMaker，可是在提交的时候，就遇到了如下的问题： 不过，庆幸的是，刚好在我搜'><title>git报错：remote/ Support for password authentication was removed on August 13, 2021的解决办法</title>
 
-<link rel='canonical' href='https://example.com/p/20210815/'>
+<link rel='canonical' href='https://abnerpei.github.io/p/20210815/'>
 
 <link rel="stylesheet" href="/scss/style.min.a99bbdf33b3937f46e8d8c482fae4cccbc90f8c8f463dfa9b43885c46384d24e.css"><meta property='og:title' content='git报错：remote/ Support for password authentication was removed on August 13, 2021的解决办法'>
 <meta property='og:description' content='周末在家，天公不做美，大雨！所以，就优化一下之前的一个开源库PPMaker，可是在提交的时候，就遇到了如下的问题： 不过，庆幸的是，刚好在我搜'>
-<meta property='og:url' content='https://example.com/p/20210815/'>
+<meta property='og:url' content='https://abnerpei.github.io/p/20210815/'>
 <meta property='og:site_name' content='AbnerPei'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='git' /><meta property='article:published_time' content='2021-08-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-08-15T00:00:00&#43;00:00'/><meta property='og:image' content='https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210815.jpeg' />
 <meta name="twitter:title" content="git报错：remote/ Support for password authentication was removed on August 13, 2021的解决办法">
@@ -495,47 +495,45 @@
      
     
         
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+    <script src="https://utteranc.es/client.js" 
+        repo="AbnerPei/AbnerPei.github.io"
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
 
 <style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
+    .utterances {
+        max-width: unset;
     }
 </style>
 
 <script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (DISQUS) {
-            DISQUS.reset({
-                reload: true
-            });
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
         }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
     })
 </script>
+
 
     
 
