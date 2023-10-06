@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='设置符号断点，有以下几种方式： Style 1、Breakpoint navigator Style 2、Debug -&amp;gt; Breakpoints -&amp;gt; Create Symbolic Breakpoint... Style 3、快捷键：option &#43; command &#43; \ 如上图所示！'><title>设置符号断点（Symbolic Breakpoint）的几种方式</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='在Swift 4.2之前，self 是全局保留关键字，所以如果在逃逸闭包中把 self 标记为 weak 后，还想继续使用 self 就需要使用两个 ` 将 self 包起来： 1 guard let `self` = self'><title>别再这样写了：guard let `self` = self else { return }，这个bug已经修复了！</title>
 
-<link rel='canonical' href='https://abnerpei.github.io/p/20230606/'>
+<link rel='canonical' href='https://abnerpei.github.io/p/%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86guard-let-self-self-else-return-%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86/'>
 
-<link rel="stylesheet" href="/scss/style.min.a99bbdf33b3937f46e8d8c482fae4cccbc90f8c8f463dfa9b43885c46384d24e.css"><meta property='og:title' content='设置符号断点（Symbolic Breakpoint）的几种方式'>
-<meta property='og:description' content='设置符号断点，有以下几种方式： Style 1、Breakpoint navigator Style 2、Debug -&amp;gt; Breakpoints -&amp;gt; Create Symbolic Breakpoint... Style 3、快捷键：option &#43; command &#43; \ 如上图所示！'>
-<meta property='og:url' content='https://abnerpei.github.io/p/20230606/'>
+<link rel="stylesheet" href="/scss/style.min.a99bbdf33b3937f46e8d8c482fae4cccbc90f8c8f463dfa9b43885c46384d24e.css"><meta property='og:title' content='别再这样写了：guard let `self` = self else { return }，这个bug已经修复了！'>
+<meta property='og:description' content='在Swift 4.2之前，self 是全局保留关键字，所以如果在逃逸闭包中把 self 标记为 weak 后，还想继续使用 self 就需要使用两个 ` 将 self 包起来： 1 guard let `self` = self'>
+<meta property='og:url' content='https://abnerpei.github.io/p/%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86guard-let-self-self-else-return-%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86/'>
 <meta property='og:site_name' content='AbnerPei'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='符号断点' /><meta property='article:published_time' content='2023-06-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-06-06T00:00:00&#43;00:00'/><meta property='og:image' content='https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg' />
-<meta name="twitter:title" content="设置符号断点（Symbolic Breakpoint）的几种方式">
-<meta name="twitter:description" content="设置符号断点，有以下几种方式： Style 1、Breakpoint navigator Style 2、Debug -&amp;gt; Breakpoints -&amp;gt; Create Symbolic Breakpoint... Style 3、快捷键：option &#43; command &#43; \ 如上图所示！"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='iOS' /><meta property='article:tag' content='Swift' /><meta property='article:tag' content='Tips' /><meta property='article:published_time' content='2022-09-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-09-05T00:00:00&#43;00:00'/><meta property='og:image' content='https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/iOS/SwiftNotes/20220905%20-%20%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86%EF%BC%9Aguard%20let%20%60self%60%20%3D%20self%20else%20%7B%20return%20%7D%EF%BC%8C%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86%EF%BC%81/20221006.jpg' />
+<meta name="twitter:title" content="别再这样写了：guard let `self` = self else { return }，这个bug已经修复了！">
+<meta name="twitter:description" content="在Swift 4.2之前，self 是全局保留关键字，所以如果在逃逸闭包中把 self 标记为 weak 后，还想继续使用 self 就需要使用两个 ` 将 self 包起来： 1 guard let `self` = self"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/iOS/SwiftNotes/20220905%20-%20%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86%EF%BC%9Aguard%20let%20%60self%60%20%3D%20self%20else%20%7B%20return%20%7D%EF%BC%8C%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86%EF%BC%81/20221006.jpg' />
     <link rel="shortcut icon" href="img/favicon.png" />
 
     </head>
@@ -238,9 +238,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/20230606/">
+            <a href="/p/%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86guard-let-self-self-else-return-%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86/">
                 
-                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" alt="Featured image of post 设置符号断点（Symbolic Breakpoint）的几种方式" />
+                    <img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/iOS/SwiftNotes/20220905%20-%20%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86%EF%BC%9Aguard%20let%20%60self%60%20%3D%20self%20else%20%7B%20return%20%7D%EF%BC%8C%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86%EF%BC%81/20221006.jpg" loading="lazy" alt="Featured image of post 别再这样写了：guard let `self` = self else { return }，这个bug已经修复了！" />
                 
             </a>
         </div>
@@ -254,16 +254,12 @@
                 iOS
             </a>
         
-            <a href="/categories/%E5%B7%A5%E5%85%B7/" style="background-color: #296062; color: #fff;">
-                工具
-            </a>
-        
     </header>
     
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/20230606/">设置符号断点（Symbolic Breakpoint）的几种方式</a>
+            <a href="/p/%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86guard-let-self-self-else-return-%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86/">别再这样写了：guard let `self` = self else { return }，这个bug已经修复了！</a>
         </h2>
     
         
@@ -282,7 +278,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jun 06, 2023</time>
+                <time class="article-time--published">Sep 05, 2022</time>
             </div>
         
 
@@ -311,37 +307,36 @@
     <section class="article-content">
     
     
-    <p>设置符号断点，有以下几种方式：</p>
-<h2 id="style-1breakpoint-navigator">Style 1、<code>Breakpoint navigator</code></h2>
-<p><img src="https://ap-life-job.oss-cn-shanghai.aliyuncs.com/Job/Developer/iOS/Obsidian-Images/%E8%B0%83%E8%AF%95%E7%AF%87/%E7%AC%A6%E5%8F%B7%E6%96%AD%E7%82%B9/001.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<p><img src="http://pic1.win4000.com/wallpaper/2018-07-17/5b4da212ea4b8.jpg"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<h2 id="style-2debug---breakpoints---create-symbolic-breakpoint">Style 2、<code>Debug</code> -&gt; <code>Breakpoints</code> -&gt; <code>Create Symbolic Breakpoint...</code></h2>
-<p><img src="https://ap-life-job.oss-cn-shanghai.aliyuncs.com/Job/Developer/iOS/Obsidian-Images/%E8%B0%83%E8%AF%95%E7%AF%87/%E7%AC%A6%E5%8F%B7%E6%96%AD%E7%82%B9/002.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<h2 id="style-3快捷键option--command--">Style 3、快捷键：<code>option</code> + <code>command</code> + <code>\</code></h2>
-<blockquote>
-<p>如上图所示！</p>
-</blockquote>
+    <p>在<code>Swift 4.2</code>之前，<code>self</code> 是全局保留关键字，所以如果在逃逸闭包中把 <code>self</code> 标记为 <code>weak</code> 后，还想继续使用 <code>self</code> 就需要使用两个 <strong><!-- raw HTML omitted -->`<!-- raw HTML omitted --></strong> 将 <code>self</code> 包起来：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="k">guard</span> <span class="kd">let</span> <span class="p">`</span><span class="kc">self</span><span class="p">`</span> <span class="p">=</span> <span class="kc">self</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>而在 <code>Swift 4.2</code> 之后，基于 <a class="link" href="https://github.com/apple/swift-evolution/blob/master/proposals/0079-upgrade-self-from-weak-to-strong.md#relying-on-a-compiler-bug"  target="_blank" rel="noopener"
+    >Allow using optional binding to upgrade</a> <a class="link" href="https://github.com/apple/swift-evolution/blob/master/proposals/0079-upgrade-self-from-weak-to-strong.md#relying-on-a-compiler-bug"  target="_blank" rel="noopener"
+    >self</a> <a class="link" href="https://github.com/apple/swift-evolution/blob/master/proposals/0079-upgrade-self-from-weak-to-strong.md#relying-on-a-compiler-bug"  target="_blank" rel="noopener"
+    >from a weak to strong reference</a> 提案，可选绑定中的 <code>self</code> 不再作为保留关键字。我们完全可以光明正大的这么写了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="k">guard</span> <span class="kd">let</span> <span class="nv">self</span> <span class="p">=</span> <span class="kc">self</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="参考链接">参考链接</h2>
+<ul>
+<li><a class="link" href="https://zhuanlan.zhihu.com/p/100218825"  target="_blank" rel="noopener"
+    >Swift Tips 022</a></li>
+<li><a class="link" href="https://github.com/apple/swift-evolution/blob/master/proposals/0079-upgrade-self-from-weak-to-strong.md#relying-on-a-compiler-bug"  target="_blank" rel="noopener"
+    >Allow using optional binding to upgrade </a></li>
+<li><a class="link" href="https://github.com/JohnSundell/SwiftTips#22-overriding-self-with-a-weak-reference"  target="_blank" rel="noopener"
+    >guard let `self` = self else { return } is a bug</a></li>
+</ul>
 
 </section>
 
@@ -350,7 +345,11 @@
     
     <section class="article-tags">
         
-            <a href="/tags/%E7%AC%A6%E5%8F%B7%E6%96%AD%E7%82%B9/">符号断点</a>
+            <a href="/tags/ios/">iOS</a>
+        
+            <a href="/tags/swift/">Swift</a>
+        
+            <a href="/tags/tips/">Tips</a>
         
     </section>
 
@@ -384,42 +383,6 @@
             
                 
 <article class="has-image">
-    <a href="/p/20210502/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20210502" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">iOS代码块（CodeSnippets）你值得拥有：大大提升编码效率</h2>
-        </div>
-    </a>
-</article>
-            
-                
-<article class="has-image">
-    <a href="/p/20171124/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2017/20171124.jpeg" loading="lazy" data-key="20171124" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2017/20171124.jpeg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">使用CocoaPods管理iOS库---制作pod篇</h2>
-        </div>
-    </a>
-</article>
-            
-                
-<article class="has-image">
     <a href="/p/%E5%85%B3%E4%BA%8Esocket%E6%8E%A8%E9%80%81%E5%A4%84%E7%90%86%E7%9A%84%E6%94%B9%E8%BF%9B/">
         
         
@@ -438,18 +401,18 @@
             
                 
 <article class="has-image">
-    <a href="/p/%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86guard-let-self-self-else-return-%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86/">
+    <a href="/p/20230606/">
         
         
             <div class="article-image">
                 
-                    <img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/iOS/SwiftNotes/20220905%20-%20%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86%EF%BC%9Aguard%20let%20%60self%60%20%3D%20self%20else%20%7B%20return%20%7D%EF%BC%8C%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86%EF%BC%81/20221006.jpg" loading="lazy" data-key="" data-hash="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/iOS/SwiftNotes/20220905%20-%20%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86%EF%BC%9Aguard%20let%20%60self%60%20%3D%20self%20else%20%7B%20return%20%7D%EF%BC%8C%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86%EF%BC%81/20221006.jpg"/>
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20230606" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">别再这样写了：guard let `self` = self else { return }，这个bug已经修复了！</h2>
+            <h2 class="article-title">设置符号断点（Symbolic Breakpoint）的几种方式</h2>
         </div>
     </a>
 </article>
@@ -468,6 +431,42 @@
 
         <div class="article-details">
             <h2 class="article-title">iOS15终于迎来了UIButton的这个改动！</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/20210502/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20210502" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">iOS代码块（CodeSnippets）你值得拥有：大大提升编码效率</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/ios%E9%93%BE%E5%BC%8F%E5%88%9B%E5%BB%BAui%E7%BB%88%E7%BB%93%E8%80%85-ppmaker/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180509.jpeg" loading="lazy" data-key="" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2018/20180509.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">iOS链式创建UI终结者 ➜ PPMaker</h2>
         </div>
     </a>
 </article>
@@ -638,9 +637,7 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#style-1breakpoint-navigator">Style 1、<code>Breakpoint navigator</code></a></li>
-    <li><a href="#style-2debug---breakpoints---create-symbolic-breakpoint">Style 2、<code>Debug</code> -&gt; <code>Breakpoints</code> -&gt; <code>Create Symbolic Breakpoint...</code></a></li>
-    <li><a href="#style-3快捷键option--command--">Style 3、快捷键：<code>option</code> + <code>command</code> + <code>\</code></a></li>
+    <li><a href="#参考链接">参考链接</a></li>
   </ol>
 </nav>
         </div>
