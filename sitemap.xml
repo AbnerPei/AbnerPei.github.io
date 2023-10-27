@@ -3,18 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://abnerpei.github.io/</loc>
-    <lastmod>2023-09-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://abnerpei.github.io/categories/api/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://abnerpei.github.io/categories/</loc>
-    <lastmod>2023-09-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://abnerpei.github.io/tags/ios/</loc>
-    <lastmod>2023-09-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://abnerpei.github.io/categories/ios/</loc>
-    <lastmod>2023-09-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://abnerpei.github.io/post/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://abnerpei.github.io/p/ios-weak-self-api/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://abnerpei.github.io/tags/ios/</loc>
     <lastmod>2023-09-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://abnerpei.github.io/tags/</loc>
@@ -58,9 +64,6 @@
   </url><url>
     <loc>https://abnerpei.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2022-04-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://abnerpei.github.io/categories/api/</loc>
-    <lastmod>2021-10-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://abnerpei.github.io/p/ios-ios15-uibutton-update-api/</loc>
     <lastmod>2021-10-16T00:00:00+00:00</lastmod>
