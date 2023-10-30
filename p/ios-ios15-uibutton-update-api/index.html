@@ -301,7 +301,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -315,13 +315,13 @@
     <section class="article-content">
     
     
-    <p>截止目前（<code>2021-10-16</code>）为止，要想实现下面的几种<code>button</code>样式（这里要考虑图片和文字间距），我所知道的方案有两种：</p>
+    <p>截止目前（<code>2021-10-16</code>）为止，要想实现下面的几种 <code>button</code> 样式（这里要考虑图片和文字间距），我所知道的方案有两种：</p>
 <ol>
 <li>
-<p>给<code>UIButton</code>添加分类</p>
+<p>给 <code>UIButton</code> 添加分类</p>
 </li>
 <li>
-<p>自定义<code>UIButton</code></p>
+<p>自定义 <code>UIButton</code></p>
 </li>
 </ol>
 <p>而在实际开发中，我们使用 <strong>方案1</strong> 应该是最多的！</p>
@@ -333,10 +333,10 @@
 	
 	
 ></p>
-<p>自我参加工作（<code>2015-06</code>）以来，对于<code>UIButton</code>如上图的需求就一直有，而且还有很多！说实话，我也一直困惑，苹果爸爸问什么不支持一下呢？</p>
-<p>也许是有人不停地给苹果爸爸提<code>issue</code>，
+<p>自我参加工作（<code>2015-06</code>）以来，对于 <code>UIButton</code> 如上图的需求就一直有，而且还有很多！说实话，我也一直困惑，苹果爸爸问什么不支持一下呢？</p>
+<p>也许是有人不停地给苹果爸爸提 <code>issue</code> ，
 也许是苹果爸爸也遇到大量的如此需求，
-也许苹果爸爸做了统计发现几乎所有<code>APP</code>都有<code>UIButton</code>这类<code>Categroy</code>（<code>Swift</code>是<code>Extension</code>）,
+也许苹果爸爸做了统计发现几乎所有 <code>APP</code> 都有 <code>UIButton</code> 这类 <code>Categroy</code>（<code>Swift</code>是 <code>Extension</code>）,
 也许苹果爸爸终于闲了有时间管了，
 也许&hellip;，
 不管怎么说，<strong><code>iOS15</code>，苹果爸爸支持了！而且<code>API</code>也如预期的那样简单</strong>：</p>
@@ -359,9 +359,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>插一句：对于<code>configuration</code>这样的<code>API</code>设计，我是非常认可的，一看就知道是干什么用的！感觉苹果爸爸也有意如此设计，比如<code>iOS14</code>开始的的<code>PHPickerConfiguration</code>等。</p>
+<p>插一句：对于 <code>configuration</code> 这样的 <code>API</code> 设计，我是非常认可的，一看就知道是干什么用的！感觉苹果爸爸也有意如此设计，比如 <code>iOS14</code> 开始的的 <code>PHPickerConfiguration</code> 等。</p>
 </blockquote>
-<p>而我能发现这个，源自今天（<code>2021-10-16</code>）下午，打算用<code>Swift</code>重写老项目（《<strong>酷乐潮玩</strong>》）的一个推荐列表页，其中<code>cell</code>上有如下几个按钮，我想参考<code>OC</code>写的<code>UIButton</code>的<code>category</code>，也写个<code>Swift</code>版的：</p>
+<p>而我能发现这个，源自今天（<code>2021-10-16</code>）下午，打算用 <code>Swift</code> 重写老项目（《<strong>酷乐潮玩</strong>》）的一个推荐列表页，其中 <code>cell</code> 上有如下几个按钮，我想参考 <code>OC</code> 写的 <code>UIButton</code> 的 <code>category</code> ，也写个 <code>Swift</code> 版的：</p>
 <p><img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/API/iOS15-UIButton/002.jpg"
 	
 	
@@ -386,7 +386,7 @@
 	
 	
 ></p>
-<p>可是，在敲<code>titleedg</code>时，竟提示<code>'titleEdgeInsets' will be deprecated in iOS 15.0</code>。这瞬间激起了我的兴趣，于是点击进去一探究竟！</p>
+<p>可是，在敲 <code>titleedg</code> 时，竟提示 <code>'titleEdgeInsets' will be deprecated in iOS 15.0</code> 。这瞬间激起了我的兴趣，于是点击进去一探究竟！</p>
 <p><img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/API/iOS15-UIButton/005.png"
 	
 	
@@ -395,7 +395,7 @@
 	
 	
 ></p>
-<p><code>Swift</code>版<code>UIButtonConfiguration</code>：
+<p><code>Swift</code> 版 <code>UIButtonConfiguration</code>：
 <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/API/iOS15-UIButton/006.png"
 	
 	
@@ -404,7 +404,7 @@
 	
 	
 ></p>
-<p><code>Objective-C</code>版<code>UIButtonConfiguration</code>：
+<p><code>Objective-C</code> 版 <code>UIButtonConfiguration</code>：
 <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/API/iOS15-UIButton/007.png"
 	
 	
@@ -413,7 +413,7 @@
 	
 	
 ></p>
-<p>于是，我粗略地写了个<code>demo</code>验证一下，最终效果图：</p>
+<p>于是，我粗略地写了个 <code>demo</code> 验证一下，最终效果图：</p>
 <p><img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/API/iOS15-UIButton/008.png"
 	
 	
@@ -531,8 +531,8 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>最后，话又说回来了，目前我们的<code>APP</code>不可能是从<code>iOS15</code>开始的，估计大多数是从<code>iOS11</code>开始的，还有一部分是从<code>iOS9</code>开始，也有一部分是从<code>iOS13</code>开始的，所以 <strong>做好兼容还是很有必要的</strong>！</p>
-<p>而更多关于<code>UIButton</code>的新知，请自行查看<code>API</code>学习，总体感觉：<strong>UIButton更丰富多彩了</strong>！</p>
+</div><p>最后，话又说回来了，目前我们的 <code>APP</code> 不可能是从 <code>iOS15</code> 开始的，估计大多数是从 <code>iOS11</code> 开始的，还有一部分是从 <code>iOS9</code> 开始，也有一部分是从 <code>iOS13</code> 开始的，所以 <strong>做好兼容还是很有必要的</strong>！</p>
+<p>而更多关于 <code>UIButton</code> 的新知，请自行查看 <code>API</code> 学习，总体感觉：<strong>UIButton更丰富多彩了</strong> ！</p>
 
 </section>
 

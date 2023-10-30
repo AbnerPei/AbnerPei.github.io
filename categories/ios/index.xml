@@ -680,13 +680,13 @@
         <pubDate>Sat, 16 Oct 2021 00:00:00 +0000</pubDate>
         
         <guid>https://abnerpei.github.io/p/ios-ios15-uibutton-update-api/</guid>
-        <description>&lt;img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20211016.jpeg" alt="Featured image of post iOS15终于迎来了UIButton的这个改动！" /&gt;&lt;p&gt;截止目前（&lt;code&gt;2021-10-16&lt;/code&gt;）为止，要想实现下面的几种&lt;code&gt;button&lt;/code&gt;样式（这里要考虑图片和文字间距），我所知道的方案有两种：&lt;/p&gt;
+        <description>&lt;img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20211016.jpeg" alt="Featured image of post iOS15终于迎来了UIButton的这个改动！" /&gt;&lt;p&gt;截止目前（&lt;code&gt;2021-10-16&lt;/code&gt;）为止，要想实现下面的几种 &lt;code&gt;button&lt;/code&gt; 样式（这里要考虑图片和文字间距），我所知道的方案有两种：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;给&lt;code&gt;UIButton&lt;/code&gt;添加分类&lt;/p&gt;
+&lt;p&gt;给 &lt;code&gt;UIButton&lt;/code&gt; 添加分类&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;自定义&lt;code&gt;UIButton&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;自定义 &lt;code&gt;UIButton&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;而在实际开发中，我们使用 &lt;strong&gt;方案1&lt;/strong&gt; 应该是最多的！&lt;/p&gt;
@@ -698,10 +698,10 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;自我参加工作（&lt;code&gt;2015-06&lt;/code&gt;）以来，对于&lt;code&gt;UIButton&lt;/code&gt;如上图的需求就一直有，而且还有很多！说实话，我也一直困惑，苹果爸爸问什么不支持一下呢？&lt;/p&gt;
-&lt;p&gt;也许是有人不停地给苹果爸爸提&lt;code&gt;issue&lt;/code&gt;，
+&lt;p&gt;自我参加工作（&lt;code&gt;2015-06&lt;/code&gt;）以来，对于 &lt;code&gt;UIButton&lt;/code&gt; 如上图的需求就一直有，而且还有很多！说实话，我也一直困惑，苹果爸爸问什么不支持一下呢？&lt;/p&gt;
+&lt;p&gt;也许是有人不停地给苹果爸爸提 &lt;code&gt;issue&lt;/code&gt; ，
 也许是苹果爸爸也遇到大量的如此需求，
-也许苹果爸爸做了统计发现几乎所有&lt;code&gt;APP&lt;/code&gt;都有&lt;code&gt;UIButton&lt;/code&gt;这类&lt;code&gt;Categroy&lt;/code&gt;（&lt;code&gt;Swift&lt;/code&gt;是&lt;code&gt;Extension&lt;/code&gt;）,
+也许苹果爸爸做了统计发现几乎所有 &lt;code&gt;APP&lt;/code&gt; 都有 &lt;code&gt;UIButton&lt;/code&gt; 这类 &lt;code&gt;Categroy&lt;/code&gt;（&lt;code&gt;Swift&lt;/code&gt;是 &lt;code&gt;Extension&lt;/code&gt;）,
 也许苹果爸爸终于闲了有时间管了，
 也许&amp;hellip;，
 不管怎么说，&lt;strong&gt;&lt;code&gt;iOS15&lt;/code&gt;，苹果爸爸支持了！而且&lt;code&gt;API&lt;/code&gt;也如预期的那样简单&lt;/strong&gt;：&lt;/p&gt;
@@ -724,9 +724,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;插一句：对于&lt;code&gt;configuration&lt;/code&gt;这样的&lt;code&gt;API&lt;/code&gt;设计，我是非常认可的，一看就知道是干什么用的！感觉苹果爸爸也有意如此设计，比如&lt;code&gt;iOS14&lt;/code&gt;开始的的&lt;code&gt;PHPickerConfiguration&lt;/code&gt;等。&lt;/p&gt;
+&lt;p&gt;插一句：对于 &lt;code&gt;configuration&lt;/code&gt; 这样的 &lt;code&gt;API&lt;/code&gt; 设计，我是非常认可的，一看就知道是干什么用的！感觉苹果爸爸也有意如此设计，比如 &lt;code&gt;iOS14&lt;/code&gt; 开始的的 &lt;code&gt;PHPickerConfiguration&lt;/code&gt; 等。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;而我能发现这个，源自今天（&lt;code&gt;2021-10-16&lt;/code&gt;）下午，打算用&lt;code&gt;Swift&lt;/code&gt;重写老项目（《&lt;strong&gt;酷乐潮玩&lt;/strong&gt;》）的一个推荐列表页，其中&lt;code&gt;cell&lt;/code&gt;上有如下几个按钮，我想参考&lt;code&gt;OC&lt;/code&gt;写的&lt;code&gt;UIButton&lt;/code&gt;的&lt;code&gt;category&lt;/code&gt;，也写个&lt;code&gt;Swift&lt;/code&gt;版的：&lt;/p&gt;
+&lt;p&gt;而我能发现这个，源自今天（&lt;code&gt;2021-10-16&lt;/code&gt;）下午，打算用 &lt;code&gt;Swift&lt;/code&gt; 重写老项目（《&lt;strong&gt;酷乐潮玩&lt;/strong&gt;》）的一个推荐列表页，其中 &lt;code&gt;cell&lt;/code&gt; 上有如下几个按钮，我想参考 &lt;code&gt;OC&lt;/code&gt; 写的 &lt;code&gt;UIButton&lt;/code&gt; 的 &lt;code&gt;category&lt;/code&gt; ，也写个 &lt;code&gt;Swift&lt;/code&gt; 版的：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/API/iOS15-UIButton/002.jpg&#34;
 	
 	
@@ -751,7 +751,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;可是，在敲&lt;code&gt;titleedg&lt;/code&gt;时，竟提示&lt;code&gt;&#39;titleEdgeInsets&#39; will be deprecated in iOS 15.0&lt;/code&gt;。这瞬间激起了我的兴趣，于是点击进去一探究竟！&lt;/p&gt;
+&lt;p&gt;可是，在敲 &lt;code&gt;titleedg&lt;/code&gt; 时，竟提示 &lt;code&gt;&#39;titleEdgeInsets&#39; will be deprecated in iOS 15.0&lt;/code&gt; 。这瞬间激起了我的兴趣，于是点击进去一探究竟！&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/API/iOS15-UIButton/005.png&#34;
 	
 	
@@ -760,7 +760,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Swift&lt;/code&gt;版&lt;code&gt;UIButtonConfiguration&lt;/code&gt;：
+&lt;p&gt;&lt;code&gt;Swift&lt;/code&gt; 版 &lt;code&gt;UIButtonConfiguration&lt;/code&gt;：
 &lt;img src=&#34;https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/API/iOS15-UIButton/006.png&#34;
 	
 	
@@ -769,7 +769,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Objective-C&lt;/code&gt;版&lt;code&gt;UIButtonConfiguration&lt;/code&gt;：
+&lt;p&gt;&lt;code&gt;Objective-C&lt;/code&gt; 版 &lt;code&gt;UIButtonConfiguration&lt;/code&gt;：
 &lt;img src=&#34;https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/API/iOS15-UIButton/007.png&#34;
 	
 	
@@ -778,7 +778,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;于是，我粗略地写了个&lt;code&gt;demo&lt;/code&gt;验证一下，最终效果图：&lt;/p&gt;
+&lt;p&gt;于是，我粗略地写了个 &lt;code&gt;demo&lt;/code&gt; 验证一下，最终效果图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/iOS/API/iOS15-UIButton/008.png&#34;
 	
 	
@@ -896,8 +896,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;最后，话又说回来了，目前我们的&lt;code&gt;APP&lt;/code&gt;不可能是从&lt;code&gt;iOS15&lt;/code&gt;开始的，估计大多数是从&lt;code&gt;iOS11&lt;/code&gt;开始的，还有一部分是从&lt;code&gt;iOS9&lt;/code&gt;开始，也有一部分是从&lt;code&gt;iOS13&lt;/code&gt;开始的，所以 &lt;strong&gt;做好兼容还是很有必要的&lt;/strong&gt;！&lt;/p&gt;
-&lt;p&gt;而更多关于&lt;code&gt;UIButton&lt;/code&gt;的新知，请自行查看&lt;code&gt;API&lt;/code&gt;学习，总体感觉：&lt;strong&gt;UIButton更丰富多彩了&lt;/strong&gt;！&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;最后，话又说回来了，目前我们的 &lt;code&gt;APP&lt;/code&gt; 不可能是从 &lt;code&gt;iOS15&lt;/code&gt; 开始的，估计大多数是从 &lt;code&gt;iOS11&lt;/code&gt; 开始的，还有一部分是从 &lt;code&gt;iOS9&lt;/code&gt; 开始，也有一部分是从 &lt;code&gt;iOS13&lt;/code&gt; 开始的，所以 &lt;strong&gt;做好兼容还是很有必要的&lt;/strong&gt;！&lt;/p&gt;
+&lt;p&gt;而更多关于 &lt;code&gt;UIButton&lt;/code&gt; 的新知，请自行查看 &lt;code&gt;API&lt;/code&gt; 学习，总体感觉：&lt;strong&gt;UIButton更丰富多彩了&lt;/strong&gt; ！&lt;/p&gt;
 </description>
         </item>
         <item>
