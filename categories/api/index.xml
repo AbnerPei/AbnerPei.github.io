@@ -12,7 +12,7 @@
         <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
         
         <guid>https://abnerpei.github.io/p/ios-weak-self-api/</guid>
-        <description>&lt;img src="https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/20231026-tips-%E7%AE%80%E6%B4%81%E7%9A%84%5Bweak%20self%5D/001.gif" alt="Featured image of post 进击的 [weak self]" /&gt;&lt;p&gt;关于 &lt;code&gt;[weak self]&lt;/code&gt; 处理循环引用，在之前的文章 &lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://abnerpei.github.io/p/%e5%88%ab%e5%86%8d%e8%bf%99%e6%a0%b7%e5%86%99%e4%ba%86guard-let-self-self-else-return-%e8%bf%99%e4%b8%aabug%e5%b7%b2%e7%bb%8f%e4%bf%ae%e5%a4%8d%e4%ba%86/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;img src="https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2023/20231026-tips-%E7%AE%80%E6%B4%81%E7%9A%84%5Bweak%20self%5D/001.gif" alt="Featured image of post 进击的 [weak self]" /&gt;&lt;p&gt;关于 &lt;code&gt;[weak self]&lt;/code&gt; 处理循环引用，在之前的文章 &lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://abnerpei.github.io/p/%e5%88%ab%e5%86%8d%e8%bf%99%e6%a0%b7%e5%86%99%e4%ba%86guard-let-self-self-else-return-%e8%bf%99%e4%b8%aabug%e5%b7%b2%e7%bb%8f%e4%bf%ae%e5%a4%8d%e4%ba%86/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;别再这样写了：guard let `self` = self else { return }，这个bug已经修复了！&lt;/a&gt;&lt;/strong&gt; 已经提到：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -34,7 +34,7 @@
 &lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;from-swift-58&#34;&gt;from &lt;code&gt;Swift 5.8&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;从 &lt;code&gt;Swift 5.8&lt;/code&gt; 开始，&lt;code&gt;[weak self]&lt;/code&gt; 又有了新的变化，如下：&lt;code&gt;self&lt;/code&gt; 也可以省略了！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/20231026-tips-%E7%AE%80%E6%B4%81%E7%9A%84%5Bweak%20self%5D/001.gif&#34;
+&lt;p&gt;&lt;img src=&#34;https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2023/20231026-tips-%E7%AE%80%E6%B4%81%E7%9A%84%5Bweak%20self%5D/001.gif&#34;
 	
 	
 	
@@ -47,7 +47,7 @@
 &lt;p&gt;下图出自：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/640933281?utm_id=0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Swift 5.8 逃逸闭包中省略 self 关键字&lt;/a&gt;&lt;/strong&gt; （更多分析，也可看该博文）&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/20231026-tips-%E7%AE%80%E6%B4%81%E7%9A%84%5Bweak%20self%5D/002.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2023/20231026-tips-%E7%AE%80%E6%B4%81%E7%9A%84%5Bweak%20self%5D/002.png&#34;
 	
 	
 	

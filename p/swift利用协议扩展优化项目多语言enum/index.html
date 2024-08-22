@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='启发 原本在看 Codable 相关的 Swift：JSON解析（上） ，看该文章右边有个相关推荐 Swift：通过Protocol封装统和入参 ，一口气把它给看完了'><title>Swift利用协议扩展优化项目多语言enum</title>
+
+<link rel='canonical' href='https://abnerpei.github.io/p/swift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum/'>
+
+<link rel="stylesheet" href="/scss/style.min.a99bbdf33b3937f46e8d8c482fae4cccbc90f8c8f463dfa9b43885c46384d24e.css"><meta property='og:title' content='Swift利用协议扩展优化项目多语言enum'>
+<meta property='og:description' content='启发 原本在看 Codable 相关的 Swift：JSON解析（上） ，看该文章右边有个相关推荐 Swift：通过Protocol封装统和入参 ，一口气把它给看完了'>
+<meta property='og:url' content='https://abnerpei.github.io/p/swift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum/'>
+<meta property='og:site_name' content='AbnerPei'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='iOS' /><meta property='article:tag' content='项目经验' /><meta property='article:tag' content='协议' /><meta property='article:published_time' content='2024-08-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-08-22T00:00:00&#43;00:00'/><meta property='og:image' content='https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2024/20240822%E3%80%8ASwift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum%E3%80%8B/banner.webp' />
+<meta name="twitter:title" content="Swift利用协议扩展优化项目多语言enum">
+<meta name="twitter:description" content="启发 原本在看 Codable 相关的 Swift：JSON解析（上） ，看该文章右边有个相关推荐 Swift：通过Protocol封装统和入参 ，一口气把它给看完了"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2024/20240822%E3%80%8ASwift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum%E3%80%8B/banner.webp' />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucb9c9ffb845db07b7d3d94a22ab153fb_80061_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">👨🏻‍💻</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">AbnerPei</a></h1>
+            <h2 class="site-description">一日为码农，终身撸不停!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/AbnerPei'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="icon" width="200px" height="195.23px" viewBox="0 0 1049 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M524.979332 0C234.676191 0 0 234.676191 0 524.979332c0 232.068678 150.366597 428.501342 358.967656 498.035028 26.075132 5.215026 35.636014-11.299224 35.636014-25.205961 0-12.168395-0.869171-53.888607-0.869171-97.347161-146.020741 31.290159-176.441729-62.580318-176.441729-62.580318-23.467619-60.841976-58.234462-76.487055-58.234463-76.487055-47.804409-32.15933 3.476684-32.15933 3.476685-32.15933 53.019436 3.476684 80.83291 53.888607 80.83291 53.888607 46.935238 79.963739 122.553122 57.365291 152.97411 43.458554 4.345855-33.897672 18.252593-57.365291 33.028501-70.402857-116.468925-12.168395-239.022047-57.365291-239.022047-259.012982 0-57.365291 20.860106-104.300529 53.888607-140.805715-5.215026-13.037566-23.467619-66.926173 5.215027-139.067372 0 0 44.327725-13.906737 144.282399 53.888607 41.720212-11.299224 86.917108-17.383422 131.244833-17.383422s89.524621 6.084198 131.244833 17.383422C756.178839 203.386032 800.506564 217.29277 800.506564 217.29277c28.682646 72.1412 10.430053 126.029806 5.215026 139.067372 33.897672 36.505185 53.888607 83.440424 53.888607 140.805715 0 201.64769-122.553122 245.975415-239.891218 259.012982 19.121764 16.514251 35.636014 47.804409 35.636015 97.347161 0 70.402857-0.869171 126.898978-0.869172 144.282399 0 13.906737 9.560882 30.420988 35.636015 25.205961 208.601059-69.533686 358.967656-265.96635 358.967655-498.035028C1049.958663 234.676191 814.413301 0 524.979332 0z" fill="#191717" /><path d="M199.040177 753.571326c-0.869171 2.607513-5.215026 3.476684-8.691711 1.738342s-6.084198-5.215026-4.345855-7.82254c0.869171-2.607513 5.215026-3.476684 8.691711-1.738342s5.215026 5.215026 4.345855 7.82254z m-6.953369-4.345856M219.900283 777.038945c-2.607513 2.607513-7.82254 0.869171-10.430053-2.607514-3.476684-3.476684-4.345855-8.691711-1.738342-11.299224 2.607513-2.607513 6.953369-0.869171 10.430053 2.607514 3.476684 4.345855 4.345855 9.560882 1.738342 11.299224z m-5.215026-5.215027M240.760389 807.459932c-3.476684 2.607513-8.691711 0-11.299224-4.345855-3.476684-4.345855-3.476684-10.430053 0-12.168395 3.476684-2.607513 8.691711 0 11.299224 4.345855 3.476684 4.345855 3.476684 9.560882 0 12.168395z m0 0M269.443034 837.011749c-2.607513 3.476684-8.691711 2.607513-13.906737-1.738342-4.345855-4.345855-6.084198-10.430053-2.607513-13.037566 2.607513-3.476684 8.691711-2.607513 13.906737 1.738342 4.345855 3.476684 5.215026 9.560882 2.607513 13.037566z m0 0M308.555733 853.526c-0.869171 4.345855-6.953369 6.084198-13.037566 4.345855-6.084198-1.738342-9.560882-6.953369-8.691711-10.430053 0.869171-4.345855 6.953369-6.084198 13.037566-4.345855 6.084198 1.738342 9.560882 6.084198 8.691711 10.430053z m0 0M351.145116 857.002684c0 4.345855-5.215026 7.82254-11.299224 7.82254-6.084198 0-11.299224-3.476684-11.299224-7.82254s5.215026-7.82254 11.299224-7.82254c6.084198 0 11.299224 3.476684 11.299224 7.82254z m0 0M391.126986 850.049315c0.869171 4.345855-3.476684 8.691711-9.560882 9.560882-6.084198 0.869171-11.299224-1.738342-12.168395-6.084197-0.869171-4.345855 3.476684-8.691711 9.560881-9.560882 6.084198-0.869171 11.299224 1.738342 12.168396 6.084197z m0 0" fill="#191717" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.jianshu.com/u/24508796c320'
+                        target="_blank"
+                        title="简书"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="icon" width="200px" height="200.00px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M654.791 38.495h-286.53c-95.005 0-142.412 0-193.612 16.118-55.94 20.48-99.935 64.474-120.225 120.226-16.308 51.2-16.308 98.607-16.308 193.611v286.53c0 95.005 0 142.602 16.118 193.613 20.29 55.75 64.285 99.745 120.036 120.035 51.2 16.119 98.607 16.119 193.611 16.119h286.53c95.005 0 142.413 0 193.613-16.119 55.75-20.29 99.745-64.284 120.225-120.035 16.118-51.2 16.118-98.608 16.118-193.612V368.45c0-95.005 0-142.412-16.118-193.612-20.29-55.752-64.285-99.746-120.225-120.226-50.821-16.118-98.228-16.118-193.233-16.118z m0 0" fill="#EA6F5A" /><path d="M235.52 456.818h70.732v370.346H235.52V456.818z m40.012-112.45c17.825 32.995 29.203 65.8 34.512 98.796h77.18c-10.62-42.097-23.894-74.903-39.823-98.797h-71.87z m0 0" fill="#FFFFFF" /><path d="M427.804 278.566h85.144v-46.649H358.59c1.706-3.603 4.361-10.05 7.964-19.153 1.707-7.395 3.603-12.705 5.31-16.497H292.03c-12.326 49.303-40.77 85.902-85.144 109.795v46.65c58.595-14.602 100.124-39.254 124.966-73.956H358.4c8.913 23.703 14.222 46.648 15.929 68.645h74.524c-5.12-25.79-12.326-48.734-21.049-68.835z m-34.702 148.1h320.664v301.701c1.707 27.497-10.62 40.202-37.167 38.306h-43.995v54.803h63.906c62.009 1.896 92.16-26.549 90.453-85.144V371.864h-393.86v54.803z m0 0" fill="#FFFFFF" /><path d="M643.224 476.16H382.483v277.049H563.39c56.699 1.896 83.437-25.6 79.834-82.3V476.16z m-188.871 49.304h117.001v63.146H454.353v-63.146z m82.488 178.252h-82.488v-68.457h117.001v32.996c1.707 25.41-9.671 37.357-34.513 35.46zM645.88 229.262c0-1.896 0.948-4.55 2.654-8.154l7.965-24.652h-79.834c-12.516 51.2-39.823 89.695-82.49 115.295v43.805c54.993-14.602 96.712-40.202 124.967-76.8h37.167c8.913 23.703 14.222 46.648 15.929 68.645h71.87c-1.707-18.204-8.913-41.15-21.239-68.645h93.108v-49.304H645.88z m0 0" fill="#FFFFFF" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/%E4%B9%A6%E7%AD%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>书签</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/swift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum/">
+                
+                    <img src="https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2024/20240822%E3%80%8ASwift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum%E3%80%8B/banner.webp" loading="lazy" alt="Featured image of post Swift利用协议扩展优化项目多语言enum" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/ios/" style="background-color: #000000; color: #fff;">
+                iOS
+            </a>
+        
+            <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C/" style="background-color: #D17E89; color: #fff;">
+                项目经验
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/swift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum/">Swift利用协议扩展优化项目多语言enum</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 22, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="启发">启发</h2>
+<p>原本在看 <code>Codable</code> 相关的 <a class="link" href="https://juejin.cn/post/6973815178164961287"  target="_blank" rel="noopener"
+    >Swift：JSON解析（上）</a> ，看该文章右边有个相关推荐 <a class="link" href="https://juejin.cn/post/7166063196434857991"  target="_blank" rel="noopener"
+    >Swift：通过Protocol封装统和入参</a> ，一口气把它给看完了，我日常开发的编码思路跟作者的如出一辙，但有一点儿我也是临时觉得有些不妥：如下图所示，<code>toString</code> 每个枚举里面都要写，其实完全没必要，通过协议扩展可以轻松解决！
+<img src="https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2024/20240822%E3%80%8ASwift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum%E3%80%8B/001.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+>
+改进 <code>ToStringProtocol</code> 的扩展，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="kd">extension</span> <span class="nc">ToStringProtocol</span> <span class="k">where</span> <span class="kc">Self</span><span class="p">:</span> <span class="nb">RawRepresentable</span><span class="p">,</span> <span class="kc">Self</span><span class="p">.</span><span class="n">RawValue</span> <span class="p">==</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">toString</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="n">rawValue</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>而 <code>ClickEvent</code> 中的枚举，无论是 <code>AController</code>、<code>BController</code>，还是后续新增的，都只需要遵循 <code>ToStringProtocol</code> 即可拥有 <code>toString</code> 属性！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="c1">//protocol ToStringProtocol {</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//    var toString: String { get }</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">enum</span> <span class="nc">ClickEvent</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">/// 让AController遵守ToStringProtocol</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">enum</span> <span class="nc">AController</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">ToStringProtocol</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">oneButtonClick</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">twoButtonClick</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">/// 让BController遵守ToStringProtocol</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">enum</span> <span class="nc">BController</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">ToStringProtocol</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">oneButtonClick</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">twoButtonClick</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="项目实战优化">项目实战（优化）</h2>
+<h3 id="未优化时">未优化时</h3>
+<ul>
+<li><code>LAccountSettings</code> 和 <code>LAccountSettingsAction</code> 中存在共同（<strong>可抽离</strong>）的代码：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">language</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">rawValue</span><span class="p">.</span><span class="n">language</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2024/20240822%E3%80%8ASwift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum%E3%80%8B/002.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<ul>
+<li><code>language()</code> 的实现竟然是 <code>String</code> 的 <code>extension</code>：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="kd">extension</span> <span class="nc">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">language</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Bundle</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">localizedString</span><span class="p">(</span><span class="n">forKey</span><span class="p">:</span> <span class="kc">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样的坏处很显然：<strong>所有 <code>String</code> 类型都可以调用 <code>language</code> 方法！</strong></p>
+<ul>
+<li><code>case</code> 名字太长　
+　</li>
+</ul>
+<h3 id="优化">优化</h3>
+<h4 id="先简单介绍下项目中的-strings-">先简单介绍下项目中的 <code>.strings</code> :</h4>
+<ul>
+<li><code>Localizable.strings</code> : 系统默认；</li>
+<li><code>InfoPlist.strings</code> : 系统权限配置，系统会自动读取；</li>
+<li><code>Onboarding.strings</code> : 自定义，Onboarding 业务多语言；</li>
+<li><code>Tool.strings</code> : 自定义，Tool （工具）业务多语言
+<img src="https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2024/20240822%E3%80%8ASwift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum%E3%80%8B/003.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></li>
+</ul>
+<h4 id="需要用到的-api-localizedstringforkeyvaluetable">需要用到的 <code>API</code> ：<code>localizedString(forKey:value:table:)</code></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl">    <span class="cm">/* Methods for retrieving localized strings. */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">open</span> <span class="kd">func</span> <span class="nf">localizedString</span><span class="p">(</span><span class="n">forKey</span> <span class="n">key</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">String</span><span class="p">?,</span> <span class="n">table</span> <span class="n">tableName</span><span class="p">:</span> <span class="nb">String</span><span class="p">?)</span> <span class="p">-&gt;</span> <span class="nb">String</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>key</strong>: 要查找的字符串键。</li>
+<li><strong>value</strong>: 如果在指定的 <code>Localizable.strings</code> 文件中未找到 <code>key</code>，将返回此值。如果为 <code>nil</code>，则返回 <code>key</code> 本身。</li>
+<li><strong>tableName</strong>: <code>Localizable.strings</code> 文件的名称。如果为 <code>nil</code>，默认使用 <code>Localizable.strings</code>。</li>
+</ul>
+<p><strong><code>NOTE</code></strong>：当前开发中，只需要 <code>key</code> 和 <code>tableName</code>！</p>
+<h4 id="设计枚举-table-管理-strings">设计枚举 <code>Table</code> ，管理 <code>.strings</code></h4>
+<blockquote>
+<p><code>InfoPlist.strings</code> 是系统读取，所以工程要配置，但是开发不用管！</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="kd">enum</span> <span class="nc">Table</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="p">`</span><span class="k">default</span><span class="p">`</span> <span class="p">=</span> <span class="s">&#34;Localizable&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="n">Onboarding</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="n">Tool</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">language</span><span class="p">(</span><span class="n">forKey</span> <span class="n">key</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Bundle</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">localizedString</span><span class="p">(</span><span class="n">forKey</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">rawValue</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><strong><code>NOTE</code></strong>：一个宗旨：<strong>项目中多语言字符串，全部映射为相应的枚举</strong>，防止因字符串出错（如少一个字母、多一个字母等）而不易排查问题！</p>
+</blockquote>
+<p>采用 <code>Table</code> 枚举的好处：</p>
+<ul>
+<li>便于管理所有 <code>table</code> ，防止因字符串出错而不易排查；</li>
+<li>对 <code>localizedString(forKey:value:table:)</code> 的封装，便于内外部调用 （外部调用，就算不遵循 <code>MultiLanguage</code> 也可以便捷调用）</li>
+</ul>
+<h4 id="设计-multilanguage-协议扩展-multilanguage-协议">设计 <code>MultiLanguage</code> 协议，扩展 <code>MultiLanguage</code> 协议</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="kd">protocol</span> <span class="nc">MultiLanguage</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">specialKey</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">table</span><span class="p">:</span> <span class="n">Table</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">language</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">extension</span> <span class="nc">MultiLanguage</span> <span class="k">where</span> <span class="kc">Self</span><span class="p">:</span> <span class="nb">RawRepresentable</span><span class="p">,</span> <span class="kc">Self</span><span class="p">.</span><span class="n">RawValue</span> <span class="p">==</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">specialKey</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="n">rawValue</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">table</span><span class="p">:</span> <span class="n">Table</span> <span class="p">{</span> <span class="p">.</span><span class="k">default</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">language</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">table</span><span class="p">.</span><span class="n">language</span><span class="p">(</span><span class="n">forKey</span><span class="p">:</span> <span class="n">specialKey</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>MultiLanguage</code> 扩展采用 <code>where Self: RawRepresentable, Self.RawValue == String</code>，来限制遵循 <code>MultiLanguage</code> 协议的对象为<strong>原始值类型为 <code>String</code> 的枚举</strong>！</li>
+<li><code>MultiLanguage</code> 扩展提供了默认实现
+　</li>
+</ul>
+<h5 id="specialkey"><code>specialKey</code></h5>
+<p><strong>Q</strong>：为什么 <code>MultiLanguage</code> 协议要设计一个 <strong><code>specialKey</code></strong> 属性？明明上面提到 <code>localizedString(forKey:value:table:)</code> 只需要 <code>key</code> 和 <code>tableName</code> 就可以。</p>
+<p><strong>A</strong>：在 <code>XX.strings</code> 文件中，多语言的 <code>key</code> 我个人更倾向绑定上业务，如 <code>account_settings_Email</code>、<code>account_settings_Name</code>，<code>account_settings_action_logout</code>、<code>account_settings_action_delete_account</code> （详见上 <code>.strings</code> 处的截图），而不是单一的 <code>Email</code>、<code>Name</code>、<code>logout</code>、<code>delete_account</code>。</p>
+<blockquote>
+<p>印象最深的一个翻译：<code>Next</code> ，项目中有<strong>下一次</strong>，也有<strong>下一步</strong>，所以不能单一的 <code>Next</code> （这个真实项目写一写，就能体会其中滋味）。
+　</p>
+</blockquote>
+<h4 id="新增继承协议处理自定义的-strings">新增继承协议，处理自定义的 <code>.strings</code></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="kd">protocol</span> <span class="nc">ToolMultiLanguage</span><span class="p">:</span> <span class="n">MultiLanguage</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">extension</span> <span class="nc">ToolMultiLanguage</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">table</span><span class="p">:</span> <span class="n">Table</span> <span class="p">{</span> <span class="p">.</span><span class="n">Tool</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">protocol</span> <span class="nc">OnboardingMultiLanguage</span><span class="p">:</span> <span class="n">MultiLanguage</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">extension</span> <span class="nc">OnboardingMultiLanguage</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">table</span><span class="p">:</span> <span class="n">Table</span> <span class="p">{</span> <span class="p">.</span><span class="n">Onboarding</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如上代码所示，对于 <code>Tool</code> 和 <code>Onboarding</code>，只需要新建继承自 <code>MultiLanguage</code> 的协议，并重写 <code>table</code> 即可！
+　
+　</p>
+<h4 id="示例">示例</h4>
+<h5 id="1新建空的枚举-ltxt">1、新建空的枚举 <code>LTxt</code></h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="c1">/// 文字</span>
+</span></span><span class="line"><span class="cl"><span class="kd">enum</span> <span class="nc">LTxt</span> <span class="p">{}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="2在-ltxt-的-extension-中新增各种-enum并使其遵循-multilanguage-等协议">2、在 <code>LTxt</code> 的 <code>extension</code> 中新增各种 <code>enum</code>，并使其遵循 <code>MultiLanguage</code> 等协议</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="c1">//!!!: Profile - Account Settings</span>
+</span></span><span class="line"><span class="cl"><span class="kd">extension</span> <span class="nc">LTxt</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">enum</span> <span class="nc">AccountSettings</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">MultiLanguage</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">Email</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">Name</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">Gender</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">Age</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">Height</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nv">specialKey</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;account_settings_&#34;</span> <span class="o">+</span> <span class="n">rawValue</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">enum</span> <span class="nc">Action</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">MultiLanguage</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">logout</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">delete_account</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="kd">var</span> <span class="nv">specialKey</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;account_settings_action_&#34;</span> <span class="o">+</span> <span class="n">rawValue</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="n">make</span><span class="p">.</span><span class="n">setTitle</span><span class="p">(</span><span class="n">LTxt</span><span class="p">.</span><span class="n">AccountSettings</span><span class="p">.</span><span class="n">Action</span><span class="p">.</span><span class="n">logout</span><span class="p">.</span><span class="n">language</span><span class="p">,</span> <span class="k">for</span><span class="p">:</span> <span class="p">.</span><span class="n">normal</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>　</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="c1">//!!!: 饱腹感</span>
+</span></span><span class="line"><span class="cl"><span class="kd">extension</span> <span class="nc">LTxt</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">enum</span> <span class="nc">FeelingFullNess</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">CaseIterable</span><span class="p">,</span> <span class="n">ToolMultiLanguage</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">Starving</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">Hungry</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">Neutral</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">Satisfied</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="n">Full</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nv">specialKey</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;feeling_fullness_&#34;</span> <span class="o">+</span> <span class="n">rawValue</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">         
+</span></span><span class="line"><span class="cl">        <span class="kd">static</span> <span class="kd">var</span> <span class="nv">all</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">{</span> <span class="kc">Self</span><span class="p">.</span><span class="n">allCases</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span> <span class="nv">$0</span><span class="p">.</span><span class="n">language</span> <span class="p">})}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">getBtLb</span><span class="p">(</span><span class="n">at</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="n">LTxt</span><span class="p">.</span><span class="n">FeelingFullNess</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">idxBt</span><span class="p">:</span> <span class="n">UIButton</span><span class="p">,</span> <span class="n">idxLb</span><span class="p">:</span> <span class="n">UILabel</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nv">bt</span> <span class="p">=</span> <span class="n">UIButton</span><span class="p">(</span><span class="n">type</span><span class="p">:</span> <span class="p">.</span><span class="n">custom</span><span class="p">).</span><span class="n">then</span> <span class="p">{</span> <span class="n">make</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bgView</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">make</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nv">lb</span> <span class="p">=</span> <span class="n">UILabel</span><span class="p">(</span><span class="n">font</span><span class="p">:</span> <span class="p">.</span><span class="n">quicksandMedium</span><span class="p">(</span><span class="mi">12</span><span class="o">~</span><span class="p">),</span> <span class="n">textColor</span><span class="p">:</span> <span class="p">.</span><span class="n">C_151515_70</span><span class="p">).</span><span class="n">then</span><span class="p">({</span> <span class="n">make</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bgView</span><span class="p">.</span><span class="n">addSubview</span><span class="p">(</span><span class="n">make</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">make</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="n">title</span><span class="p">.</span><span class="n">language</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">bt</span><span class="p">,</span> <span class="n">lb</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="总结感慨">总结（感慨）</h2>
+<p><code>Swift</code> 的协议，真的是个好东东，再次感受到编码的愉悦，上一次的愉悦来自 <a class="link" href="https://abnerpei.github.io/p/%E5%85%B3%E4%BA%8Esocket%E6%8E%A8%E9%80%81%E5%A4%84%E7%90%86%E7%9A%84%E6%94%B9%E8%BF%9B/"  target="_blank" rel="noopener"
+    >关于Socket推送处理的改进</a>。
+　
+　</p>
+<h2 id="附录统和入参">附录：统和入参</h2>
+<blockquote>
+<p>来自 <strong><code>ChatGPT</code></strong> 。</p>
+</blockquote>
+<p><strong>统和入参</strong> 这个词汇通常出现在软件开发、系统设计或者业务流程的场景中，指的是在进行系统设计或开发时，将多个不同来源或类型的输入参数进行统一和整合的过程。这个过程的目标是简化接口设计、减少复杂性，以及提高代码的可维护性和灵活性。
+　</p>
+<h3 id="背景">背景</h3>
+<p>在复杂的系统中，往往会有多个接口、服务或者模块之间需要进行数据传递。不同的模块可能需要不同类型的输入参数，而这些参数可能来源于不同的系统或用户输入。在这种情况下，如果每个模块都设计自己的独立参数结构，系统就会变得复杂且难以维护。　
+　</p>
+<h3 id="意义">意义</h3>
+<p><strong>统和入参</strong> 的作用就是在这样的场景下，将这些不同的输入参数进行标准化和统一，以一种通用的、标准化的方式传递给系统内部的各个模块。这种方法有助于：</p>
+<ul>
+<li><strong>减少冗余</strong>：避免每个模块都设计独立的参数结构，减少重复的代码和冗余的逻辑。</li>
+<li><strong>提高可维护性</strong>：通过统一的参数接口，开发人员可以更容易地理解和维护代码。</li>
+<li><strong>增强扩展性</strong>：当需要增加新的功能或模块时，可以直接使用已统一的参数接口，不需要对现有的系统做大的改动。
+　</li>
+</ul>
+<h3 id="总结">总结</h3>
+<p><strong>统和入参</strong> 是一种在系统设计中常用的策略，通过将多个不同来源的输入参数进行统一和整合，可以简化系统的复杂性，提高系统的可维护性和扩展性。这个概念特别适用于大型系统或者需要处理多种输入的场景。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ios/">iOS</a>
+        
+            <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C/">项目经验</a>
+        
+            <a href="/tags/%E5%8D%8F%E8%AE%AE/">协议</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%85%B3%E4%BA%8Esocket%E6%8E%A8%E9%80%81%E5%A4%84%E7%90%86%E7%9A%84%E6%94%B9%E8%BF%9B/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/iOS/ProjectExperience/EP/20230928%20-%20%E5%85%B3%E4%BA%8ESocket%E6%8E%A8%E9%80%81%E5%A4%84%E7%90%86%E7%9A%84%E6%94%B9%E8%BF%9B/20230928.jpg" loading="lazy" data-key="" data-hash="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/iOS/ProjectExperience/EP/20230928%20-%20%E5%85%B3%E4%BA%8ESocket%E6%8E%A8%E9%80%81%E5%A4%84%E7%90%86%E7%9A%84%E6%94%B9%E8%BF%9B/20230928.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">关于Socket推送处理的改进</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86guard-let-self-self-else-return-%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/iOS/SwiftNotes/20220905%20-%20%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86%EF%BC%9Aguard%20let%20%60self%60%20%3D%20self%20else%20%7B%20return%20%7D%EF%BC%8C%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86%EF%BC%81/20221006.jpg" loading="lazy" data-key="" data-hash="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/iOS/SwiftNotes/20220905%20-%20%E5%88%AB%E5%86%8D%E8%BF%99%E6%A0%B7%E5%86%99%E4%BA%86%EF%BC%9Aguard%20let%20%60self%60%20%3D%20self%20else%20%7B%20return%20%7D%EF%BC%8C%E8%BF%99%E4%B8%AAbug%E5%B7%B2%E7%BB%8F%E4%BF%AE%E5%A4%8D%E4%BA%86%EF%BC%81/20221006.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">别再这样写了：guard let `self` = self else { return }，这个bug已经修复了！</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/ios-weak-self-api/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2023/20231026-tips-%E7%AE%80%E6%B4%81%E7%9A%84%5Bweak%20self%5D/001.gif" loading="lazy" data-key="ios-[weak self]-api" data-hash="https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2023/20231026-tips-%E7%AE%80%E6%B4%81%E7%9A%84%5Bweak%20self%5D/001.gif"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">进击的 [weak self]</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/20230606/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg" loading="lazy" data-key="20230606" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20210502.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">设置符号断点（Symbolic Breakpoint）的几种方式</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/ios-ios15-uibutton-update-api/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20211016.jpeg" loading="lazy" data-key="ios-ios15-uibutton-update-api" data-hash="https://ap-hexo-blog-images.oss-cn-shanghai.aliyuncs.com/BlogCover/2021/20211016.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">iOS15终于迎来了UIButton的这个改动！</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src="https://utteranc.es/client.js" 
+        repo="AbnerPei/AbnerPei.github.io"
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2016 - 
+        
+        2024 AbnerPei
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#启发">启发</a></li>
+    <li><a href="#项目实战优化">项目实战（优化）</a>
+      <ol>
+        <li><a href="#未优化时">未优化时</a></li>
+        <li><a href="#优化">优化</a>
+          <ol>
+            <li><a href="#先简单介绍下项目中的-strings-">先简单介绍下项目中的 <code>.strings</code> :</a></li>
+            <li><a href="#需要用到的-api-localizedstringforkeyvaluetable">需要用到的 <code>API</code> ：<code>localizedString(forKey:value:table:)</code></a></li>
+            <li><a href="#设计枚举-table-管理-strings">设计枚举 <code>Table</code> ，管理 <code>.strings</code></a></li>
+            <li><a href="#设计-multilanguage-协议扩展-multilanguage-协议">设计 <code>MultiLanguage</code> 协议，扩展 <code>MultiLanguage</code> 协议</a></li>
+            <li><a href="#新增继承协议处理自定义的-strings">新增继承协议，处理自定义的 <code>.strings</code></a></li>
+            <li><a href="#示例">示例</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#总结感慨">总结（感慨）</a></li>
+    <li><a href="#附录统和入参">附录：统和入参</a>
+      <ol>
+        <li><a href="#背景">背景</a></li>
+        <li><a href="#意义">意义</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
