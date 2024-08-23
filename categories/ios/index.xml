@@ -12,7 +12,7 @@
         <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
         
         <guid>https://abnerpei.github.io/p/swift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum/</guid>
-        <description>&lt;img src="https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2024/20240822%E3%80%8ASwift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum%E3%80%8B/banner.webp" alt="Featured image of post Swift利用协议扩展优化项目多语言enum" /&gt;&lt;h2 id=&#34;启发&#34;&gt;启发&lt;/h2&gt;
+        <description>&lt;img src="https://ap-developer-images.oss-cn-shanghai.aliyuncs.com/iOS/2024/20240822%E3%80%8ASwift%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%A9%E5%B1%95%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%A4%9A%E8%AF%AD%E8%A8%80enum%E3%80%8B/banner.webp" alt="Featured image of post Swift利用协议扩展优化项目多语言enum" /&gt;&lt;h2 id=&#34;1-启发&#34;&gt;1 启发&lt;/h2&gt;
 &lt;p&gt;原本在看 &lt;code&gt;Codable&lt;/code&gt; 相关的 &lt;a class=&#34;link&#34; href=&#34;https://juejin.cn/post/6973815178164961287&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Swift：JSON解析（上）&lt;/a&gt; ，看该文章右边有个相关推荐 &lt;a class=&#34;link&#34; href=&#34;https://juejin.cn/post/7166063196434857991&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Swift：通过Protocol封装统和入参&lt;/a&gt; ，一口气把它给看完了，我日常开发的编码思路跟作者的如出一辙，但有一点儿我也是临时觉得有些不妥：如下图所示，&lt;code&gt;toString&lt;/code&gt; 每个枚举里面都要写，其实完全没必要，通过协议扩展可以轻松解决！
@@ -82,8 +82,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;项目实战优化&#34;&gt;项目实战（优化）&lt;/h2&gt;
-&lt;h3 id=&#34;未优化时&#34;&gt;未优化时&lt;/h3&gt;
+&lt;/div&gt;&lt;h2 id=&#34;2-项目实战优化&#34;&gt;2 项目实战（优化）&lt;/h2&gt;
+&lt;h3 id=&#34;21-未优化时&#34;&gt;2.1 未优化时&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;LAccountSettings&lt;/code&gt; 和 &lt;code&gt;LAccountSettingsAction&lt;/code&gt; 中存在共同（&lt;strong&gt;可抽离&lt;/strong&gt;）的代码：&lt;/li&gt;
 &lt;/ul&gt;
@@ -131,8 +131,8 @@
 &lt;li&gt;&lt;code&gt;case&lt;/code&gt; 名字太长　
 　&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;优化&#34;&gt;优化&lt;/h3&gt;
-&lt;h4 id=&#34;先简单介绍下项目中的-strings-&#34;&gt;先简单介绍下项目中的 &lt;code&gt;.strings&lt;/code&gt; :&lt;/h4&gt;
+&lt;h3 id=&#34;22-优化&#34;&gt;2.2 优化&lt;/h3&gt;
+&lt;h4 id=&#34;-先简单介绍下项目中的-strings-&#34;&gt;① 先简单介绍下项目中的 &lt;code&gt;.strings&lt;/code&gt; :&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Localizable.strings&lt;/code&gt; : 系统默认；&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;InfoPlist.strings&lt;/code&gt; : 系统权限配置，系统会自动读取；&lt;/li&gt;
@@ -147,7 +147,7 @@
 	
 &gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;需要用到的-api-localizedstringforkeyvaluetable&#34;&gt;需要用到的 &lt;code&gt;API&lt;/code&gt; ：&lt;code&gt;localizedString(forKey:value:table:)&lt;/code&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;-需要用到的-api-localizedstringforkeyvaluetable&#34;&gt;② 需要用到的 &lt;code&gt;API&lt;/code&gt; ：&lt;code&gt;localizedString(forKey:value:table:)&lt;/code&gt;&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -164,7 +164,7 @@
 &lt;li&gt;&lt;strong&gt;tableName&lt;/strong&gt;: &lt;code&gt;Localizable.strings&lt;/code&gt; 文件的名称。如果为 &lt;code&gt;nil&lt;/code&gt;，默认使用 &lt;code&gt;Localizable.strings&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;NOTE&lt;/code&gt;&lt;/strong&gt;：当前开发中，只需要 &lt;code&gt;key&lt;/code&gt; 和 &lt;code&gt;tableName&lt;/code&gt;！&lt;/p&gt;
-&lt;h4 id=&#34;设计枚举-table-管理-strings&#34;&gt;设计枚举 &lt;code&gt;Table&lt;/code&gt; ，管理 &lt;code&gt;.strings&lt;/code&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;-设计枚举-table-管理-strings&#34;&gt;③ 设计枚举 &lt;code&gt;Table&lt;/code&gt; ，管理 &lt;code&gt;.strings&lt;/code&gt;&lt;/h4&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;InfoPlist.strings&lt;/code&gt; 是系统读取，所以工程要配置，但是开发不用管！&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -200,7 +200,7 @@
 &lt;li&gt;便于管理所有 &lt;code&gt;table&lt;/code&gt; ，防止因字符串出错而不易排查；&lt;/li&gt;
 &lt;li&gt;对 &lt;code&gt;localizedString(forKey:value:table:)&lt;/code&gt; 的封装，便于内外部调用 （外部调用，就算不遵循 &lt;code&gt;MultiLanguage&lt;/code&gt; 也可以便捷调用）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;设计-multilanguage-协议扩展-multilanguage-协议&#34;&gt;设计 &lt;code&gt;MultiLanguage&lt;/code&gt; 协议，扩展 &lt;code&gt;MultiLanguage&lt;/code&gt; 协议&lt;/h4&gt;
+&lt;h4 id=&#34;-设计-multilanguage-协议扩展-multilanguage-协议&#34;&gt;④ 设计 &lt;code&gt;MultiLanguage&lt;/code&gt; 协议，扩展 &lt;code&gt;MultiLanguage&lt;/code&gt; 协议&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -245,7 +245,7 @@
 &lt;p&gt;印象最深的一个翻译：&lt;code&gt;Next&lt;/code&gt; ，项目中有&lt;strong&gt;下一次&lt;/strong&gt;，也有&lt;strong&gt;下一步&lt;/strong&gt;，所以不能单一的 &lt;code&gt;Next&lt;/code&gt; （这个真实项目写一写，就能体会其中滋味）。
 　&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;新增继承协议处理自定义的-strings&#34;&gt;新增继承协议，处理自定义的 &lt;code&gt;.strings&lt;/code&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;-新增继承协议处理自定义的-strings&#34;&gt;⑤ 新增继承协议，处理自定义的 &lt;code&gt;.strings&lt;/code&gt;&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -273,7 +273,7 @@
 &lt;/div&gt;&lt;p&gt;如上代码所示，对于 &lt;code&gt;Tool&lt;/code&gt; 和 &lt;code&gt;Onboarding&lt;/code&gt;，只需要新建继承自 &lt;code&gt;MultiLanguage&lt;/code&gt; 的协议，并重写 &lt;code&gt;table&lt;/code&gt; 即可！
 　
 　&lt;/p&gt;
-&lt;h4 id=&#34;示例&#34;&gt;示例&lt;/h4&gt;
+&lt;h4 id=&#34;-示例&#34;&gt;⑥ 示例&lt;/h4&gt;
 &lt;h5 id=&#34;1新建空的枚举-ltxt&#34;&gt;1、新建空的枚举 &lt;code&gt;LTxt&lt;/code&gt;&lt;/h5&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -415,21 +415,21 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;总结感慨&#34;&gt;总结（感慨）&lt;/h2&gt;
+&lt;/div&gt;&lt;h2 id=&#34;3-总结感慨&#34;&gt;3 总结（感慨）&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;Swift&lt;/code&gt; 的协议，真的是个好东东，再次感受到编码的愉悦，上一次的愉悦来自 &lt;a class=&#34;link&#34; href=&#34;https://abnerpei.github.io/p/%E5%85%B3%E4%BA%8Esocket%E6%8E%A8%E9%80%81%E5%A4%84%E7%90%86%E7%9A%84%E6%94%B9%E8%BF%9B/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;关于Socket推送处理的改进&lt;/a&gt;。
 　
 　&lt;/p&gt;
-&lt;h2 id=&#34;附录统和入参&#34;&gt;附录：统和入参&lt;/h2&gt;
+&lt;h2 id=&#34;4-附录统和入参&#34;&gt;4 附录：统和入参&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;来自 &lt;strong&gt;&lt;code&gt;ChatGPT&lt;/code&gt;&lt;/strong&gt; 。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;统和入参&lt;/strong&gt; 这个词汇通常出现在软件开发、系统设计或者业务流程的场景中，指的是在进行系统设计或开发时，将多个不同来源或类型的输入参数进行统一和整合的过程。这个过程的目标是简化接口设计、减少复杂性，以及提高代码的可维护性和灵活性。
 　&lt;/p&gt;
-&lt;h3 id=&#34;背景&#34;&gt;背景&lt;/h3&gt;
+&lt;h5 id=&#34;背景&#34;&gt;背景&lt;/h5&gt;
 &lt;p&gt;在复杂的系统中，往往会有多个接口、服务或者模块之间需要进行数据传递。不同的模块可能需要不同类型的输入参数，而这些参数可能来源于不同的系统或用户输入。在这种情况下，如果每个模块都设计自己的独立参数结构，系统就会变得复杂且难以维护。　
 　&lt;/p&gt;
-&lt;h3 id=&#34;意义&#34;&gt;意义&lt;/h3&gt;
+&lt;h5 id=&#34;意义&#34;&gt;意义&lt;/h5&gt;
 &lt;p&gt;&lt;strong&gt;统和入参&lt;/strong&gt; 的作用就是在这样的场景下，将这些不同的输入参数进行标准化和统一，以一种通用的、标准化的方式传递给系统内部的各个模块。这种方法有助于：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;减少冗余&lt;/strong&gt;：避免每个模块都设计独立的参数结构，减少重复的代码和冗余的逻辑。&lt;/li&gt;
@@ -437,7 +437,7 @@
 &lt;li&gt;&lt;strong&gt;增强扩展性&lt;/strong&gt;：当需要增加新的功能或模块时，可以直接使用已统一的参数接口，不需要对现有的系统做大的改动。
 　&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;总结&#34;&gt;总结&lt;/h3&gt;
+&lt;h5 id=&#34;总结&#34;&gt;总结&lt;/h5&gt;
 &lt;p&gt;&lt;strong&gt;统和入参&lt;/strong&gt; 是一种在系统设计中常用的策略，通过将多个不同来源的输入参数进行统一和整合，可以简化系统的复杂性，提高系统的可维护性和扩展性。这个概念特别适用于大型系统或者需要处理多种输入的场景。&lt;/p&gt;
 </description>
         </item>
