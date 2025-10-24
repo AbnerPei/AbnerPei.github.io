@@ -101,7 +101,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;【提醒】&lt;/strong&gt; 其中&lt;code&gt;/Users/klcw/peijianbo/Flutter/flutter&lt;/code&gt;是我自己电脑对应的&lt;code&gt;Flutter SDK&lt;/code&gt;的目录，你需要修改为你的&lt;code&gt;Flutter SDK&lt;/code&gt;对应的目录。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;【提醒】&lt;/strong&gt; 其中&lt;code&gt;/Users/peijianbo/Documents/Flutter/flutter&lt;/code&gt;是我自己电脑对应的&lt;code&gt;Flutter SDK&lt;/code&gt;的目录，你需要修改为你的&lt;code&gt;Flutter SDK&lt;/code&gt;对应的目录。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;【注意】&lt;/strong&gt; 除了&lt;code&gt;export&lt;/code&gt;后有个空格，其它地方不要有空格。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;23command--s保存修改并关闭bash_profile&#34;&gt;2.3、&lt;code&gt;command + s&lt;/code&gt;保存修改并关闭&lt;code&gt;.bash_profile&lt;/code&gt;&lt;/h3&gt;
@@ -132,6 +132,66 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;出现如上图的终端，就说明&lt;strong&gt;Flutter&lt;/strong&gt;的开发环境&lt;strong&gt;配置成功了&lt;/strong&gt;。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;update----20251024&#34;&gt;Update - ① &lt;code&gt;2025.10.24&lt;/code&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;android-studio-配置错误cmdline-tools-component-is-missing&#34;&gt;Android Studio 配置错误：cmdline-tools component is missing&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/005.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;strong&gt;解决&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;找到 &lt;code&gt;More Actions&lt;/code&gt;，点击 &lt;code&gt;SDK Manager&lt;/code&gt;：
+&lt;img src=&#34;https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/006.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;选中 &lt;code&gt;SDK Tools&lt;/code&gt; 下的 &lt;code&gt;Android SDK Command-line Tools（latest）&lt;/code&gt;，然后点击 &lt;code&gt;OK&lt;/code&gt;
+&lt;img src=&#34;https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/007.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;点击 &lt;code&gt;OK&lt;/code&gt;
+&lt;img src=&#34;https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/008.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;等待下载完成，点击 &lt;code&gt;Finish&lt;/code&gt;
+&lt;img src=&#34;https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/009.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;终端重新执行命令 &lt;code&gt;flutter doctor&lt;/code&gt;
+&lt;img src=&#34;https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/010.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+至此，问题就解决了，可以进入 &lt;code&gt;flutter&lt;/code&gt; 的开发啦!&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         

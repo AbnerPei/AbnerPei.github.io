@@ -293,7 +293,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 1 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -396,7 +396,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p><strong>【提醒】</strong> 其中<code>/Users/klcw/peijianbo/Flutter/flutter</code>是我自己电脑对应的<code>Flutter SDK</code>的目录，你需要修改为你的<code>Flutter SDK</code>对应的目录。</p>
+<p><strong>【提醒】</strong> 其中<code>/Users/peijianbo/Documents/Flutter/flutter</code>是我自己电脑对应的<code>Flutter SDK</code>的目录，你需要修改为你的<code>Flutter SDK</code>对应的目录。</p>
 <p><strong>【注意】</strong> 除了<code>export</code>后有个空格，其它地方不要有空格。</p>
 </blockquote>
 <h3 id="23command--s保存修改并关闭bash_profile">2.3、<code>command + s</code>保存修改并关闭<code>.bash_profile</code></h3>
@@ -427,6 +427,66 @@
 	
 ></p>
 <p>出现如上图的终端，就说明<strong>Flutter</strong>的开发环境<strong>配置成功了</strong>。</p>
+<hr>
+<h2 id="update----20251024">Update - ① <code>2025.10.24</code></h2>
+<h3 id="android-studio-配置错误cmdline-tools-component-is-missing">Android Studio 配置错误：cmdline-tools component is missing</h3>
+<p><img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/005.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+>
+<strong>解决</strong>：</p>
+<ul>
+<li>找到 <code>More Actions</code>，点击 <code>SDK Manager</code>：
+<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/006.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></li>
+<li>选中 <code>SDK Tools</code> 下的 <code>Android SDK Command-line Tools（latest）</code>，然后点击 <code>OK</code>
+<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/007.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></li>
+<li>点击 <code>OK</code>
+<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/008.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></li>
+<li>等待下载完成，点击 <code>Finish</code>
+<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/009.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></li>
+<li>终端重新执行命令 <code>flutter doctor</code>
+<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/010.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+>
+至此，问题就解决了，可以进入 <code>flutter</code> 的开发啦!</li>
+</ul>
 
 </section>
 
@@ -513,7 +573,7 @@
         
             2016 - 
         
-        2024 AbnerPei
+        2025 AbnerPei
     </section>
     
     <section class="powerby">
@@ -637,6 +697,11 @@
         <li><a href="#23command--s保存修改并关闭bash_profile">2.3、<code>command + s</code>保存修改并关闭<code>.bash_profile</code></a></li>
         <li><a href="#24令修改后的配置生效">2.4、令修改后的配置生效</a></li>
         <li><a href="#25检查flutter开发环境是否可用">2.5、检查Flutter开发环境是否可用</a></li>
+      </ol>
+    </li>
+    <li><a href="#update----20251024">Update - ① <code>2025.10.24</code></a>
+      <ol>
+        <li><a href="#android-studio-配置错误cmdline-tools-component-is-missing">Android Studio 配置错误：cmdline-tools component is missing</a></li>
       </ol>
     </li>
   </ol>
