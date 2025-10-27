@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='一、下载Flutter SDK 1. 去Flutter官网下载最新安装包 2. 配置Flutter SDK到指定目录 二、配置Flutter开发环境 【注意】 如果M'><title>Mac上Flutter开发环境配置</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='创建 Flutter module cd 到 iOS 项目的上一级目录 执行 flutter create --template module ju_flutter 配置 iOS 项目的 Podfile 1 2 3 4 5 6 7 8 9 10 11 // ① #此处根据自己Flutter项目实际路径填写 flutter_application_path = &amp;#39;../ju_flutter&amp;#39; #此句'><title>iOS已有项目导入Flutter</title>
 
-<link rel='canonical' href='https://abnerpei.github.io/p/flutter-config/'>
+<link rel='canonical' href='https://abnerpei.github.io/p/ios%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5flutter/'>
 
-<link rel="stylesheet" href="/scss/style.min.a99bbdf33b3937f46e8d8c482fae4cccbc90f8c8f463dfa9b43885c46384d24e.css"><meta property='og:title' content='Mac上Flutter开发环境配置'>
-<meta property='og:description' content='一、下载Flutter SDK 1. 去Flutter官网下载最新安装包 2. 配置Flutter SDK到指定目录 二、配置Flutter开发环境 【注意】 如果M'>
-<meta property='og:url' content='https://abnerpei.github.io/p/flutter-config/'>
+<link rel="stylesheet" href="/scss/style.min.a99bbdf33b3937f46e8d8c482fae4cccbc90f8c8f463dfa9b43885c46384d24e.css"><meta property='og:title' content='iOS已有项目导入Flutter'>
+<meta property='og:description' content='创建 Flutter module cd 到 iOS 项目的上一级目录 执行 flutter create --template module ju_flutter 配置 iOS 项目的 Podfile 1 2 3 4 5 6 7 8 9 10 11 // ① #此处根据自己Flutter项目实际路径填写 flutter_application_path = &amp;#39;../ju_flutter&amp;#39; #此句'>
+<meta property='og:url' content='https://abnerpei.github.io/p/ios%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5flutter/'>
 <meta property='og:site_name' content='AbnerPei'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='环境配置' /><meta property='article:published_time' content='2022-04-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-09T00:00:00&#43;00:00'/><meta property='og:image' content='https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/20220409.jpeg' />
-<meta name="twitter:title" content="Mac上Flutter开发环境配置">
-<meta name="twitter:description" content="一、下载Flutter SDK 1. 去Flutter官网下载最新安装包 2. 配置Flutter SDK到指定目录 二、配置Flutter开发环境 【注意】 如果M"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/20220409.jpeg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-10-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/20251026.png' />
+<meta name="twitter:title" content="iOS已有项目导入Flutter">
+<meta name="twitter:description" content="创建 Flutter module cd 到 iOS 项目的上一级目录 执行 flutter create --template module ju_flutter 配置 iOS 项目的 Podfile 1 2 3 4 5 6 7 8 9 10 11 // ① #此处根据自己Flutter项目实际路径填写 flutter_application_path = &amp;#39;../ju_flutter&amp;#39; #此句"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/20251026.png' />
     <link rel="shortcut icon" href="img/favicon.png" />
 
     </head>
@@ -238,9 +238,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/flutter-config/">
+            <a href="/p/ios%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5flutter/">
                 
-                    <img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/20220409.jpeg" loading="lazy" alt="Featured image of post Mac上Flutter开发环境配置" />
+                    <img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/20251026.png" loading="lazy" alt="Featured image of post iOS已有项目导入Flutter" />
                 
             </a>
         </div>
@@ -259,7 +259,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/flutter-config/">Mac上Flutter开发环境配置</a>
+            <a href="/p/ios%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5flutter/">iOS已有项目导入Flutter</a>
         </h2>
     
         
@@ -278,7 +278,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Apr 09, 2022</time>
+                <time class="article-time--published">Oct 26, 2025</time>
             </div>
         
 
@@ -293,7 +293,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 1 分钟
                 </time>
             </div>
         
@@ -307,118 +307,60 @@
     <section class="article-content">
     
     
-    <h2 id="一下载flutter-sdk">一、下载Flutter SDK</h2>
-<h3 id="1-去flutter官网httpsflutterdevdocsdevelopmenttoolssdkreleasestabmacosmacos下载最新安装包"><strong>1. 去<a class="link" href="https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos"  target="_blank" rel="noopener"
-    >Flutter官网</a>下载最新安装包</strong></h3>
-<p><img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/001.png"
+    <h2 id="创建-flutter-module">创建 Flutter module</h2>
+<ul>
+<li><code>cd</code> 到 <code>iOS</code> 项目的上一级目录</li>
+<li>执行 <code>flutter create --template module ju_flutter</code>
+<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/images/001.png"
 	
 	
 	
 	loading="lazy"
 	
 	
-></p>
-<h3 id="2-配置flutter-sdk到指定目录">2. 配置Flutter SDK到指定目录</h3>
-<p><img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/002.png"
+>
+<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/images/002.png"
 	
 	
 	
 	loading="lazy"
 	
 	
-></p>
-<h2 id="二配置flutter开发环境">二、配置Flutter开发环境</h2>
-<p><strong>【注意】</strong> 如果<code>Mac</code>没有安装<a class="link" href="https://brew.sh/index_zh-cn"  target="_blank" rel="noopener"
-    ><code>Homebrew</code></a>,可通过下面的命令安装：</p>
+></li>
+</ul>
+<h2 id="配置-ios-项目的-podfile">配置 <code>iOS</code> 项目的 <code>Podfile</code></h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/usr/bin/ruby -e <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>检查<a class="link" href="https://brew.sh/index_zh-cn"  target="_blank" rel="noopener"
-    ><code>Homebrew</code></a>版本：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew --version
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">// ①
+</span></span><span class="line"><span class="cl"><span class="c1">#此处根据自己Flutter项目实际路径填写</span>
+</span></span><span class="line"><span class="cl"><span class="nv">flutter_application_path</span> <span class="o">=</span> <span class="s1">&#39;../ju_flutter&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#此句不可缺少</span>
+</span></span><span class="line"><span class="cl">load File.join<span class="o">(</span>flutter_application_path, <span class="s1">&#39;.ios&#39;</span>, <span class="s1">&#39;Flutter&#39;</span>, <span class="s1">&#39;podhelper.rb&#39;</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/*
-</span></span><span class="line"><span class="cl">  Homebrew 3.2.16
-</span></span><span class="line"><span class="cl">  Homebrew/homebrew-core <span class="o">(</span>git revision f7d7160e185<span class="p">;</span> last commit 2021-10-12<span class="o">)</span>
-</span></span><span class="line"><span class="cl">  Homebrew/homebrew-cask <span class="o">(</span>git revision d101c8d60c<span class="p">;</span> last commit 2021-10-12<span class="o">)</span>
-</span></span><span class="line"><span class="cl">  */
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="21进入用户home目录">2.1、进入用户home目录</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ~/
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="22打开bash_profile并编辑">2.2、打开.bash_profile并编辑</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">open .bash_profile
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>在<code>.bash_profile</code>中添加：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Flutter</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PUB_HOSTED_URL</span><span class="o">=</span>https://pub.flutter-io.cn
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">FLUTTER_STORAGE_BASE_URL</span><span class="o">=</span>https://storage.flutter-io.cn
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/Users/peijianbo/Documents/Flutter/flutter/bin:<span class="nv">$PATH</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Flutter END</span>
+</span></span><span class="line"><span class="cl">// ②
+</span></span><span class="line"><span class="cl">flutter_post_install<span class="o">(</span>installer<span class="o">)</span> <span class="k">if</span> defined?<span class="o">(</span>flutter_post_install<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// ③
+</span></span><span class="line"><span class="cl">install_all_flutter_pods<span class="o">(</span>flutter_application_path<span class="o">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p><strong>【提醒】</strong> 其中<code>/Users/peijianbo/Documents/Flutter/flutter</code>是我自己电脑对应的<code>Flutter SDK</code>的目录，你需要修改为你的<code>Flutter SDK</code>对应的目录。</p>
-<p><strong>【注意】</strong> 除了<code>export</code>后有个空格，其它地方不要有空格。</p>
+<p><strong>NOTE:</strong> 注意① ② ③的位置</p>
 </blockquote>
-<h3 id="23command--s保存修改并关闭bash_profile">2.3、<code>command + s</code>保存修改并关闭<code>.bash_profile</code></h3>
-<h3 id="24令修改后的配置生效">2.4、令修改后的配置生效</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> .bash_profile
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="25检查flutter开发环境是否可用">2.5、检查Flutter开发环境是否可用</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">flutter doctor
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/003.png"
+<p><img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/images/003.png"
 	
 	
 	
@@ -426,11 +368,18 @@
 	
 	
 ></p>
-<p>出现如上图的终端，就说明<strong>Flutter</strong>的开发环境<strong>配置成功了</strong>。</p>
-<hr>
-<h2 id="update----20251024">Update - ① <code>2025.10.24</code></h2>
-<h3 id="android-studio-配置错误cmdline-tools-component-is-missing">Android Studio 配置错误：cmdline-tools component is missing</h3>
-<p><img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/005.png"
+<h2 id="安装-flutter">安装 Flutter</h2>
+<p>切到 <code>iOS</code> 项目目录，执行 <code>pod install</code>:
+<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/images/004.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h2 id="遇到问题无法-import-flutter">遇到问题：无法 <code>import Flutter</code></h2>
+<p><img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/images/005.png"
 	
 	
 	
@@ -438,10 +387,13 @@
 	
 	
 >
-<strong>解决</strong>：</p>
+去 <code>Flutter中文网</code> <a class="link" href="https://docs.flutter.cn/add-to-app/ios/project-setup"  target="_blank" rel="noopener"
+    >将 Flutter module 集成到 iOS 项目</a> 再对照教程及搜索：</p>
 <ul>
-<li>找到 <code>More Actions</code>，点击 <code>SDK Manager</code>：
-<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/006.png"
+<li><code>Flutter framework</code> 没有
+<ul>
+<li>切到 <code>ju_flutter</code> ：
+<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/images/006.png"
 	
 	
 	
@@ -449,8 +401,8 @@
 	
 	
 ></li>
-<li>选中 <code>SDK Tools</code> 下的 <code>Android SDK Command-line Tools（latest）</code>，然后点击 <code>OK</code>
-<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/007.png"
+<li>执行 <code>flutter pub get</code>:
+<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/images/007.png"
 	
 	
 	
@@ -458,8 +410,8 @@
 	
 	
 ></li>
-<li>点击 <code>OK</code>
-<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/008.png"
+<li>执行 <code>flutter build ios --no-codesign</code>
+<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/images/008.png"
 	
 	
 	
@@ -467,17 +419,25 @@
 	
 	
 ></li>
-<li>等待下载完成，点击 <code>Finish</code>
-<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/009.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></li>
-<li>终端重新执行命令 <code>flutter doctor</code>
-<img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/images/Mac%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/010.png"
+</ul>
+</li>
+<li>没有 <code>Build the project</code>
+<ul>
+<li>
+<p>创建桥接文件</p>
+<blockquote>
+<p>这里的截图用的是新建的一个项目，目的是验证是否这样配置，结果如自己所愿！</p>
+</blockquote>
+<p>在如下图的 iOSFlutterOne-Brdging-Header.h 中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Swift" data-lang="Swift"><span class="line"><span class="cl"><span class="p">#</span><span class="kd">import</span> <span class="p">&lt;</span><span class="nc">Flutter</span><span class="o">/</span><span class="nc">Flutter</span><span class="p">.</span><span class="nc">h</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/images/009.png"
 	
 	
 	
@@ -485,20 +445,26 @@
 	
 	
 >
-至此，问题就解决了，可以进入 <code>flutter</code> 的开发啦!</li>
+最后，打开 <code>iOS</code> 项目，Select <code>Product</code> &gt; <code>Build</code> or press <code>Cmd</code> + <code>B</code>.</p>
+</li>
 </ul>
+</li>
+</ul>
+<h2 id="成功导入">成功导入</h2>
+<p><img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/images/010.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
 
 </section>
 
 
     <footer class="article-footer">
     
-    <section class="article-tags">
-        
-            <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a>
-        
-    </section>
-
 
     
     <section class="article-copyright">
@@ -529,18 +495,18 @@
             
                 
 <article class="has-image">
-    <a href="/p/ios%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5flutter/">
+    <a href="/p/flutter-config/">
         
         
             <div class="article-image">
                 
-                    <img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/20251026.png" loading="lazy" data-key="" data-hash="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20251026%20-%20iOS%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5Flutter/20251026.png"/>
+                    <img src="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/20220409.jpeg" loading="lazy" data-key="flutter-config" data-hash="https://ap-public-blog.oss-cn-shanghai.aliyuncs.com/my-hugo-blog/content/post/Flutter/20220409%20-%20Mac%E4%B8%8AFlutter%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/20220409.jpeg"/>
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">iOS已有项目导入Flutter</h2>
+            <h2 class="article-title">Mac上Flutter开发环境配置</h2>
         </div>
     </a>
 </article>
@@ -711,26 +677,11 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#一下载flutter-sdk">一、下载Flutter SDK</a>
-      <ol>
-        <li><a href="#1-去flutter官网httpsflutterdevdocsdevelopmenttoolssdkreleasestabmacosmacos下载最新安装包"><strong>1. 去<a href="https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos">Flutter官网</a>下载最新安装包</strong></a></li>
-        <li><a href="#2-配置flutter-sdk到指定目录">2. 配置Flutter SDK到指定目录</a></li>
-      </ol>
-    </li>
-    <li><a href="#二配置flutter开发环境">二、配置Flutter开发环境</a>
-      <ol>
-        <li><a href="#21进入用户home目录">2.1、进入用户home目录</a></li>
-        <li><a href="#22打开bash_profile并编辑">2.2、打开.bash_profile并编辑</a></li>
-        <li><a href="#23command--s保存修改并关闭bash_profile">2.3、<code>command + s</code>保存修改并关闭<code>.bash_profile</code></a></li>
-        <li><a href="#24令修改后的配置生效">2.4、令修改后的配置生效</a></li>
-        <li><a href="#25检查flutter开发环境是否可用">2.5、检查Flutter开发环境是否可用</a></li>
-      </ol>
-    </li>
-    <li><a href="#update----20251024">Update - ① <code>2025.10.24</code></a>
-      <ol>
-        <li><a href="#android-studio-配置错误cmdline-tools-component-is-missing">Android Studio 配置错误：cmdline-tools component is missing</a></li>
-      </ol>
-    </li>
+    <li><a href="#创建-flutter-module">创建 Flutter module</a></li>
+    <li><a href="#配置-ios-项目的-podfile">配置 <code>iOS</code> 项目的 <code>Podfile</code></a></li>
+    <li><a href="#安装-flutter">安装 Flutter</a></li>
+    <li><a href="#遇到问题无法-import-flutter">遇到问题：无法 <code>import Flutter</code></a></li>
+    <li><a href="#成功导入">成功导入</a></li>
   </ol>
 </nav>
         </div>
