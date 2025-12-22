@@ -6,21 +6,29 @@
         <description>Recent content in Categories on AbnerPei</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sun, 26 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://abnerpei.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 22 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://abnerpei.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>iOS</title>
+        <link>https://abnerpei.github.io/categories/ios/</link>
+        <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://abnerpei.github.io/categories/ios/</guid>
+        <description>&lt;img src="https://abnerpei.github.io/categories/ios/001.webp" alt="Featured image of post iOS" /&gt;</description>
+        </item>
+        <item>
+        <title>底层原理</title>
+        <link>https://abnerpei.github.io/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/</link>
+        <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://abnerpei.github.io/categories/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Flutter</title>
         <link>https://abnerpei.github.io/categories/flutter/</link>
         <pubDate>Sun, 26 Oct 2025 00:00:00 +0000</pubDate>
         
         <guid>https://abnerpei.github.io/categories/flutter/</guid>
         <description>&lt;img src="https://abnerpei.github.io/categories/flutter/001.webp" alt="Featured image of post Flutter" /&gt;</description>
-        </item>
-        <item>
-        <title>iOS</title>
-        <link>https://abnerpei.github.io/categories/ios/</link>
-        <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://abnerpei.github.io/categories/ios/</guid>
-        <description>&lt;img src="https://abnerpei.github.io/categories/ios/001.webp" alt="Featured image of post iOS" /&gt;</description>
         </item>
         <item>
         <title>项目经验</title>
